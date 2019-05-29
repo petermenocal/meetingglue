@@ -1,0 +1,18 @@
+extends layoutAdmin
+
+block content
+  include navbarAdmin
+  .fl.w-100.bg-near-white
+    .mw8.center.db.pa3.near-black
+      .f2.fw2.lh-title.green CVBs 
+      each h in cvbs
+        article
+          a.link.dt.w-100.bb.b--black-10.pb2.mt2.dim.blue(href=`/admin/edit/cvb/${h._id}`)
+            .dtc.w3
+              if (h.avatarFilename)
+                img.db.w-100(src=`/uploads/${h.avatarFilename}`)
+              if (!h.avatarFilename)
+                img.db.w-100(src=`/image/placeholder.png`)
+            .dtc.v-top.pl2
+              h1.f6.f5-ns.fw6.lh-title.near-black.mv0=`${h.name}`
+              h1.f6.f5-ns.fw6.lh-title.green.mv0=`${h.city}, ${h.state}`

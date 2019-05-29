@@ -1,0 +1,18 @@
+extends layoutAdmin
+
+block content
+  include navbarAdmin
+  .fl.w-100.bg-white.h-100
+    .mw8.center.db.pa3.near-black
+      .f2.fw2.lh-title.green.bb.b--black-10.mb3=`Users (${users.length})`
+      each u in users
+        article.dt.w-100.bb.b--black-05.pb2.mt2(href='#0')
+          .dtc.w2.w3-ns.v-mid
+            img.ba.b--black-10.db.br-100.w2.w3-ns.h2.h3-ns(src=`/uploads/${u.avatarFilename}`)
+          .dtc.v-mid.pl3
+            h1.f6.f5-ns.fw6.lh-title.black.mv0=`${u.first_name} ${u.last_name}` 
+            if (u.createdOn)
+              h2.f6.fw4.mt0.mb0.black-60=`Member since ${u.createdOn.getFullYear()}`
+          .dtc.v-mid
+            a(href=`/admin/edit/user/${u._id}`)
+              button.f6.button-reset.bg-white.ba.b--black-10.dim.pointer.pv1.black-60 Edit

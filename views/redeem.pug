@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  include navbar
+  main.pa4.black-80
+    form.measure.center(action="/redeem" method="post")
+      fieldset#sign_up.ba.b--transparent.ph0.mh0
+        .mt3
+          label.db.fw6.lh-copy.f4.white(for='phone') Customer Phone Number
+          input#phone.pa2.input-reset.ba.bg-transparent.white.w-100.pa3(type='text' name='phone')
+      div
+        input.b.ph3.pv2.input-reset.ba.b--black.bg-green.white.grow.pointer.f6.dib(type='submit' value='Lookup Customer')
+    form.measure.center(action="/redeem" method="post")
+      fieldset#sign_up.ba.b--transparent.ph0.mh0
+        .mt3
+          label.db.fw6.lh-copy.f4.white(for='id') Scanner Input
+          input#phone.pa2.input-reset.ba.bg-transparent.white.w-100.pa3(type='text' name='id' autofocus)
+      div
+        input.b.ph3.pv2.input-reset.ba.b--black.bg-green.white.grow.pointer.f6.dib(type='submit' value='Lookup Customer')
+  if foundUser
+    .mw8.center.tc
+      h1.white.f2.fw4.mb0 #{foundUser.first_name} #{foundUser.last_name}
+      h5.green.f5.fw5.mt0 Found user
+      .cf
+        .fl.w-100.mb3
+          .fl.w-50
+            h2.white.f2.fw5 #{foundUser.rewards_available}
+            h5.green Rewards available
+          .fl.w-50
+            h2.white.f2.fw5 #{foundUser.loyalty_points} 
+            h5.green Loyalty point total
+          .fl.w-100
+            h3.green.fw4.f4 Use a reward for this customer.
+              //- if foundUser 
+              //-   h3 #{foundUser.first_name}
+              //-   .tile-subtitle Rewards available: #{foundUser.rewards_available} <br/>Loyalty point total: #{foundUser.loyalty_points}
+              //-   button.btn.mt-2.close-modal redeem reward
+            if foundUser
+              form(action="/redemption" method="POST")
+                input.pa3.h3(type="text" autofocus name="sku" placeholder="SCAN OR ENTER SKU")
+                input.pa3.h3(type="text" name="id" value=foundUser._id)
+                input.bg-green.pa3.white.b--green.ba.h3(type="submit")
+            if product 
+              h5 Successfully redeemed reward item:
+              h3 #{product.name}
+              a(href="/redeem")
+                button.bg-green.pa3.white.b--green.ba Done

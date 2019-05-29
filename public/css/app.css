@@ -1,0 +1,148 @@
+@import "./tachyons.min.css";
+html,
+body {
+  background: url("../image/lines.png") !important;
+  background-color: rgb(35, 15, 55) !important;
+}
+
+#home-hero {
+  background: url("../image/feature-images/oakland-cty-marriott___00000.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}
+.bg-deep-purple {
+  background: rgb(34, 8, 60);
+}
+.ts1 {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.transitionAll {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.of-cover {
+  object-fit: cover;
+}
+.of-contain {
+  object-fit: contain;
+}
+@media screen and (min-width: 60rem) {
+  .cvb-profile-container {
+    max-height: 500px;
+    overflow: hidden;
+  }
+  .bg-black-ns {
+    background: black;
+  }
+  .bg-cover-ns {
+    background-size: cover;
+  }
+  .bg-center-ns {
+    background-position: center center;
+  }
+}
+/* .active {
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+  display: block;
+  position: relative;
+  left: 0;
+  opacity: 1;
+} */
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 999999999999; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.4242s all cubic-bezier(0.68, -0.55, 0.265, 1.55); /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.product-card {
+  padding: 0.7rem;
+  height: 400px;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+.cap {
+  text-transform: capitalize;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
+.main-container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px; /* height of your footer */
+}
+
+body {
+  background: black;
+  color: white;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+html {
+  visibility: visible;
+  opacity: 1;
+}

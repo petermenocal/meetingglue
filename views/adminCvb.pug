@@ -1,0 +1,120 @@
+extends layoutAdmin
+
+block content
+  include navbarAdmin
+  .cf
+    .fl.w-100.bg-white
+      .mw8.center.db.pv3.near-black.bg-black-10.ph2.ba.b--black-10
+        - var messages = getMessages()
+        if messages
+          each msg in messages
+            .flex.items-center.justify-center.pa4.bg-light-green.navy.ba.b--green
+              svg.w1(data-icon='info', viewBox='0 0 32 32', style='fill:currentcolor')
+                title info icon
+                path(d='M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6')
+              span.lh-title.ml3= msg
+        form(method="POST" action=`/admin/edit/cvb`).tl.black.center
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          fieldset#ba.b--transparent.ph0.mh0
+            .fl.w-100
+              legend.f4.fw6.ph0.mv2 Editing
+              .fl.w-100.lh-title.green.mv2=`${foundProduct.name}`
+              .fl.w-100.lh-title.blue.ttu.mv2=`${foundProduct.city}, ${foundProduct.state}`
+            .fl.w-100.pr2
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='name') Name
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='name' value=`${foundProduct.name}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='address') Address
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='address' value=`${foundProduct.address}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='city') City
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='city' value=`${foundProduct.city}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='state') State
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='state' value=`${foundProduct.state}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='totalHotelInventory') Total hotel inventory
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='totalHotelInventory' value=`${foundProduct.totalHotelInventory}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='conventionCenter') Convention center 
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='conventionCenter' value=`${foundProduct.conventionCenter}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='factoid') Factoid
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='factoid' value=`${foundProduct.factoid}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='phone') Phone
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='phone' value=`${foundProduct.phone}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='website') Website
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='website' value=`${foundProduct.website}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for='twitter') Twitter
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='twitter' value=`${foundProduct.twitter}`)
+              .cf.pa3 
+                .lh-headline.green.f3.fw4 Nearest airport
+                .mv3.cf.bg-black-10.ph3.pa3.ba.b--black-10
+                  label.db.fw6.lh-copy.f6(for="airport") Name
+                  input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='airport' value=`${foundProduct.airport}`)
+              .cf.pa3
+                div.lh-headline.green.f3.fw4 Transportation Costs
+                .mv3.cf.bg-black-10.ph2.pa3.ba.b--black-10
+                  label.db.fw6.lh-copy.f6(for='transportation_cost_1_name') Name
+                  input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='transportation_cost_1_name' value=`${foundProduct.transportation_cost_1_name}`)
+                  label.db.fw6.lh-copy.f6.mt3(for='transportation_cost_1_price') Price
+                  input.pa2.input-reset.ba.b--black-30.w-100.mb2(type='text' name='transportation_cost_1_price' value=`${foundProduct.transportation_cost_1_price}`)
+                .mv3.cf.bg-black-10.ph2.pa3.ba.b--black-10
+                  label.db.fw6.lh-copy.f6(for='transportation_cost_2_name') Name
+                  input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='transportation_cost_2_name' value=`${foundProduct.transportation_cost_2_name}`)
+                  label.db.fw6.lh-copy.f6.mt3(for='transportation_cost_2_price') Price
+                  input.pa2.input-reset.ba.b--black-30.w-100.mb2(type='text' name='transportation_cost_2_price' value=`${foundProduct.transportation_cost_2_price}`)
+              .mv3.cf
+                input(type="submit").mt4.fl.w-100.bg-green.pa3.white.ba.b--green.dim.pointer
+        .cf.mw8.center.bg-black-20.pa3.black
+          h1 Sales Staff
+          .fl.w-100.pb4
+            form(method="POST" action="/admin/staff")
+              input(type="hidden", name="id" value=`${foundProduct._id}`)
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for="salesperson_name") Name
+                input.pa2.input-reset.ba.b--black-30.w-100(type="text" name="salesperson_name")
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for="salesperson_title") Title
+                input.pa2.input-reset.ba.b--black-30.w-100(type="text" name="salesperson_title")
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for="salesperson_email") Email
+                input.pa2.input-reset.ba.b--black-30.w-100(type="text" name="salesperson_email")
+              .mv3.cf
+                label.db.fw6.lh-copy.f6.mt3(for="salesperson_phone") Phone
+                input.pa2.input-reset.ba.b--black-30.w-100(type="text" name="salesperson_phone")
+              .mv3.cf
+                input.mt4.fl.w-100.bg-green.pa3.white.ba.b--green.dim.pointer(type="submit")
+          if (foundProduct.salesStaff && foundProduct.salesStaff.length)
+            h1 Staff in database
+            each ss, key in foundProduct.salesStaff
+              .fl.w-100.pb4.ba.b--black-20.pa3.bg-white
+                div.tl.b
+                  h4.mb0.green=`${ss.salesperson_name}`
+                  p.mt0.gray=`${ss.salesperson_title}`
+                form(method="POST" action="/admin/staff")
+                  input(type="hidden", name="id" value=`${foundProduct._id}`)
+                  input(type="hidden", name="isDeleteStaff" value=true)
+                  input(type="hidden", name="name" value=`${ss.salesperson_name}`)
+                  .mv3.cf
+                    input.mt4.fl.w-100.bg-washed-red.red.pa3.white.ba.b--red.dim.pointer(type="submit" value=`Delete`)
+      .mw8.center.bg-black-30.pa3.black
+        label.db.fw6.lh-copy.f6(for='name') Upload image
+        form(action="/admin/edit/cvb/upload" method="post" encType="multipart/form-data").form-group
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          label.form-label(for="avatar") Image
+          p
+            small Upload a picture for this entity.
+          input.form-input(type="file" name="avatar")
+          input.btn.mt-2(type="submit")
+          div.mt-2
+            h5 Current image:
+            if (foundProduct.avatarFilename)
+              img.avatar.avatar-xl(src=`/uploads/${foundProduct.avatarFilename}`)
+            if (!foundProduct.avatarFilename)
+              img.avatar.avatar-xl(src=`/image/avatar-placeholder.jpg`)
+      

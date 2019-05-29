@@ -1,0 +1,17 @@
+.fl.w-100.cf
+  .mw9.center.pv4.bg-black-40
+    .flex.flex-row.items-center.justify-between
+      .w-60.pl2
+        a.link.dim.pointer(href="/")
+          img(src="/image/logo.png" width="200" height="auto")
+      span
+        a(onClick="openNav()").db.dn-l.fr.f2.fw6.pointer.dim.mr3 &#9776;
+        a.f5.fw4.hover-gold.transitionAll.no-underline.white-70.dn.dib-l.pv2.ph3.dim.pointer(class=(page_name === "home" ? "gold" : undefined) href='/') Home
+        a.f5.fw4.hover-gold.transitionAll.no-underline.white-70.dn.dib-l.pv2.ph3.dim.pointer(class=(page_name === "hotels" ? "gold" : undefined) href='/hotels') Hotels
+        a.f5.fw4.hover-gold.transitionAll.no-underline.white-70.dn.dib-l.pv2.ph3.dim.pointer(class=(page_name === "cvbs" ? "gold" : undefined) href='/cvbs') CVBs
+        if !user
+          a.f5.fw4.hover-gold.transitionAll.no-underline.white-70.dn.dib-l.pv2.ph3.dim.pointer(class=(page_name === "login" ? "gold" : undefined) href='/login') Log in
+          a.f5.fw4.hover-gold.transitionAll.no-underline.white-70.dn.dib-l.pv2.ph3.dim.pointer(class=(page_name === "register" ? "gold" : undefined) href='/register') Register
+        if user
+          a.f5.fw4.hover-gold.transitionAll.no-underline.white-70.dn.dib-l.pv2.ph3.dim.pointer(class=(page_name === "profile" ? "gold" : undefined) href="/profile") My profile
+          a.f5.fw4.hover-gold.transitionAll.no-underline.white-70.dn.dib-l.pv2.ph3.dim.pointer(class=(page_name === "logout" ? "gold" : undefined) href="/logout") Logout

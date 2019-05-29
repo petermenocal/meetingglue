@@ -1,0 +1,44 @@
+var express = require("express");
+var router = express.Router();
+var localQuery = require("../utils/localQuery");
+var mime = require("mime-types");
+var mongoUtil = require("../utils/mongoUtil");
+var ObjectID = require("mongodb").ObjectID;
+
+router.post("/", localQuery, function(req, res, next) {
+  if (req.isAuthenticated()) {
+    var objId = ObjectID(req.user._id);
+    if (!req.files) {
+      res.redirect("/settings");
+    }
+    if (Object.keys(req.files).length == 0) {
+      return res.status(400).send("no files were uploaded");
+    }
+    let avatar = req.files.avatar;
+    let id = req.user._id;
+    let fileExtension = mime.extension(avatar.mimetype);
+    var db = mongoUtil.getDb();
+
+    avatar.mv(`public/uploads/${id}.${fileExtension}`, function(err) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      db.collection("users")
+        .findOneAndUpdate(
+          { _id: objId },
+          { $set: { avatarFilename: `${id}.${fileExtension}` } }
+        )
+        .then(function(success) {
+          req.session.passport.user.avatarFilename = `${
+            success.value.avatarFilename
+          }`;
+          res.redirect("/settings");
+        })
+        .catch(function(err) {});
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+module.exports = router;

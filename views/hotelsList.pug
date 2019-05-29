@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .fl.w-100.bg-near-black.tc
+    h1.green Hotels
+    .mv3  
+      a.link.no-underline.whitesmoke.dim.white.pointer.mr2 Show all
+      a.link.no-underline.whitesmoke.dim.white.pointer.mr2(href="hotels?state=CA") California
+      a.link.no-underline.whitesmoke.dim.white.pointer(href="hotels?state=VA") Virginia
+  .fl.w-100.bg-white
+    ul.list.pl0.mt0
+      each h in hotels
+        a(href=`/hotel/${h._id}`).link.no-underline
+          li.flex.items-center.lh-copy.pa3.ph3-l.bb.b--black-10.dim.pointer.center
+            if h.avatarFilename
+              div.h5.w5(style="overflow: hidden !important")
+                img(src=`/uploads/${h.avatarFilename}` height="100%" width="100%").of-cover
+            else
+              div.h5.w5(style="overflow: hidden !important")
+                img(src=`/image/uploads/oak-1.png` height="100%" width="100%").of-cover
+            .pl3.flex-auto
+              span.f5.db.b.black-70= h.title
+              span.f6.db.black-70=`${h.meetingRoomsAmount} meeting rooms`
+            div.pr2
+              span.f6.link.blue.hover-dark-gray=h.city + ', ' +  h.state

@@ -1,0 +1,105 @@
+extends layout
+
+block content
+  .cf
+    .fl.w-100.bg-near-black.green
+      .fl.w-100.w-50-ns.pv3.ph3
+        .fl.w-100.f3.fw4=`${cvb.name}`
+        .fl.w-100.f5.fw4.gray=`cvbs`
+      if (cvb.address)
+        .fl.w-100.w-50-ns.pv3.ph3.tr-ns
+          .fl.w-100.f3.fw4=`${cvb.address}`
+          .fl.w-100.f5.fw4.gray=`${cvb.city}`
+    .fl.w-100.bg-black.cvb-profile-container
+      .fl.w-100.w-70-l.tc
+        if !cvb.avatarFilename
+          img(src="/image/placeholder.png")
+        else
+          img(src=`/uploads/${cvb.avatarFilename}`  style="height: 500px; width:100%; object-fit: cover !important").of-cover
+      .fl.w-100.w-30-ns.pa3
+        .f4.fw5.lh-title.light-green Quick facts
+        .ph2
+          .h4
+            if (cvb.factoid)
+              .mv3.fl.w-100
+                .f6.fw3.lh-copy.gold=cvb.factoid
+            .fl.w-50-ns.w-100
+              if (cvb.phone)
+                .mv3
+                  .f6.fw4.white-70 Phone
+                  .f5.fw4.lh-copy=cvb.phone
+              if (cvb.website)
+                .mv3
+                  .f6.fw4.white-70 Website
+                  .f5.fw4.lh-copy=cvb.website
+              if (cvb.airport) 
+                .mv3
+                  .f6.fw4.white-70 Nearest airport
+                  .f5.fw4.lh-copy=cvb.airport
+            .fl.w-50-ns.w-100.pl4-l
+              if (cvb.transportation_cost_1_name)
+                .mv3
+                  .f6.fw4.white-70 Transporation Costs  
+                  .f6.fw4.lh-copy=cvb.transportation_cost_1_name
+                  .f6.fw4.lh-copy=cvb.transportation_cost_1_price
+                  if (cvb.transportation_cost_2_name)
+                    .pt2
+                      .f6.fw4.lh-copy=cvb.transportation_cost_2_name
+                      .f6.fw4.lh-copy=cvb.transportation_cost_2_price
+            
+              if (cvb.conventionCenter) 
+                .mv3
+                  .f6.fw4.white-70 Convention Center
+                  .f5.fw4.lh-copy=cvb.conventionCenter
+        if (hotelsInArea && hotelsInArea.length)
+          .fl.cf(style='max-height:370px; overflow: scroll')
+            .f4.fw5.lh-title.light-green Hotels in area
+            each hia in hotelsInArea
+              .fl.w-100.bg-near-white.near-black.pa2.link.pointer.hover-bg-light-green.transitionAll
+                a(href=`/hotel/${hia._id}`).link.no-underline.black.f5.fw2= hia.title
+    if (tweets && !cvb.salesStaff) 
+      .fl.w-100.bg-purple.white.pa3
+        .pv3
+          span.lh-headline.f3.fw6.gold=`@${cvb.twitter}`
+          span.pl2 on Twitter
+        each t in tweets
+          a.dt.w-100.bb.b--black-05.pb2.mt2.link.no-underline.dim.pointer(href=`https://twitter.com/${cvb.twitter}/status/${t.id_str}`)
+            .dtc.w2.w3-ns.v-mid
+              img.ba.b--black-10.db.br2.w2.w3-ns.h2.h3-ns(src=`${t.user.profile_image_url}`)
+            .dtc.v-mid.pl3
+              h1.f6.f5-ns.fw6.lh-title.light-green.mv0=`${t.text}` 
+              h2.f6.fw4.mt0.mb0.gold 
+    if (tweets && cvb.salesStaff) 
+      .fl.w-70.bg-purple.white.pa3
+        .pv3
+          span.lh-headline.f3.fw6.gold=`@${cvb.twitter}`
+          span.pl2 on Twitter
+        each t in tweets
+          a.dt.w-100.bb.b--black-05.pb2.mt2.link.no-underline.dim.pointer(href=`https://twitter.com/${cvb.twitter}/status/${t.id_str}`)
+            .dtc.w2.w3-ns.v-mid
+              img.ba.b--black-10.db.br2.w2.w3-ns.h2.h3-ns(src=`${t.user.profile_image_url}`)
+            .dtc.v-mid.pl3
+              h1.f6.f5-ns.fw6.lh-title.light-green.mv0=`${t.text}` 
+              h2.f6.fw4.mt0.mb0.gold 
+      if (cvb.salesStaff)
+        .fl.w-30.bg-near-black.gold.pa3(style="height: 100%; max-height: 500px")
+          .f4.fw5 Sales staff
+          ul.list.pl0.mt0.measure.center.tl
+            each s in cvb.salesStaff
+              li.flex.items-center.lh-copy.pa3.ph0-l.bb.b--black-10
+                .pl3.flex-auto
+                  span.f6.db.white-70.green=s.salesperson_name
+                  span.f6.db.white-70=s.salesperson_title
+                .pr3
+                  a.f6.link.blue.hover-dark-gray(href=`tel:${s.salesperson_phone}`)=s.salesperson_phone
+      if (cvb.updates)
+        .fl.w-100.bg-black.white.ph3
+          h1 CVB Updates
+          h4 Enrich Attendees’ Event Experiences with Volunteer Projects
+          img(src="/image/cvb-image.png").ba.b--white.bw3
+          p.lh-copy.gray Create purpose and connection among your attendees. Express your clients’ brand values by organizing a volunteer experience at your next meeting or event.
+          p.green
+            | by Arlington Convention & Visitors Service
+          p.lh-copy.white
+            | In the capital area, volunteer opportunities abound with a host of non-profits, Non-Governmental Organization (NGOs) and cause-driven organizations that can align well with your group or client’s mission. Activities can range from packing school supplies for local kids, joining in an environmental cleanup or even working as a volunteer at a charity run. If your clients’ organizational culture includes a focus on social responsibility, many local Arlington non-profits have activities that might be a good match for your attendees.
+      

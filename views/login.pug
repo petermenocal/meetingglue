@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  #error
+    if error
+      .flex.items-center.justify-center.pa4.bg-light-red.ba.b--red.mb3
+        svg.w1(data-icon='info', viewBox='0 0 32 32', style='fill:currentcolor')
+          title info icon
+          path(d='M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6')
+        span.lh-title.ml3 Error: #{error}
+    .fl.w-100.bg-black.pa3
+      form(action="/login", method="post").ph3.measure.center
+        fieldset#sign_up.ba.b--transparent.ph0.mh0
+          legend.f4.fw6.ph0.mh0 Log in
+          .mt3
+            label.db.fw6.lh-copy.f6(for='email') Email
+            input#email-address.pa3.input-reset.ba.b--white-80.bg-transparent.hover-bg-black.hover-white.white.w-100(type='email', name='email')
+          .mv3
+            label.db.fw6.lh-copy.f6(for='password') Password
+            input#password.b.pa3.input-reset.ba.b--white-80.bg-transparent.hover-bg-black.hover-white.white.w-100(type='password', name='password')
+        div
+          input.b.ph3.pv2.input-reset.ba.b--black.bg-green.white.grow.pointer.f6.dib(type='submit', value='Sign in')
+  

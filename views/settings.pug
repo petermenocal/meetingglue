@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .container
+    h1.text-secondary Settings
+    .columns
+      .column
+        h5.text-primary Identity
+        form(method="POST" action="/settings").form-group
+          label.form-label(for="first_name") First name
+          input.form-input(type="text" name="first_name" value=user.first_name)
+          label.form-label(for="last_name") Last name
+          input.form-input(type="text" name="last_name" value=user.last_name)
+          label.form-label(for="email") Email
+          input.form-input(type="email" name="email" value=user.email)
+          label.form-label(for='phone') Phone number
+          input.form-input(type="text" name="phone" value=user.phone) 
+          input.btn.mt-2(type="submit")
+      .column
+        h5.text-primary Preferences
+        form(action="/upload" method="post" encType="multipart/form-data").form-group
+          label.form-label(for="avatar") Avatar
+          p
+            small Upload a profile picture to your account.
+          input.form-input(type="file" name="avatar")
+          input.btn.mt-2(type="submit")
+          if user.avatarFilename
+          div.mt-2
+            h5 Current avatar:
+            img.avatar.avatar-xl(src=`uploads/${user.avatarFilename}`)

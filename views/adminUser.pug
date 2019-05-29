@@ -1,0 +1,34 @@
+extends layoutAdmin
+
+block content
+  include navbarAdmin
+  .fl.w-100.bg-white.h-100
+    .mw8.center.db.pv3.near-black.bg-black-10.ph2.ba.b--black-10.tc
+      if (foundUser.avatarFilename)
+        img(src=`/uploads/${foundUser.avatarFilename || `/image/avatar-placeholder.jpg` }` width="75" height="auto").outline
+      h1=`${foundUser.first_name} ${foundUser.last_name}`
+    .mw8.center.db.pv3.near-black
+      form(method="POST" action=`/admin/edit/user`).form.mw8.black.center
+        input(type="hidden", name="id" value=`${foundUser._id}`)
+        fieldset#ba.b--transparent.ph0.mh0
+          legend.f4.fw6.ph0.mh0 Edit user
+          .mt3.fl.w-100.w-50-ns.pr2
+            label.db.fw6.lh-copy.f6(for='first_name') First name
+            input.pa2.input-reset.ba.w-100(type='text', name='first_name' value=`${foundUser.first_name}`)
+          .mt3.fl.w-100.w-50-ns
+            label.db.fw6.lh-copy.f6(for='last_name') Last name
+            input.pa2.input-reset.ba.w-100(type='text', name='last_name' value=`${foundUser.last_name}`)  
+          .mt3.fl.w-100.w-50-ns
+            label.db.fw6.lh-copy.f6(for='admin_status') Admin status
+            select(name='admin')
+              if foundUser.admin == true
+                option(value="true" selected) True
+              else
+                option(value="true") True
+              if !foundUser.admin
+                option(value="false" selected) False
+        input(type="submit")
+      form(method="POST" action=`/admin/edit/user`).form.mw8.center
+        input(type="hidden", name="id" value=`${foundUser._id}`)
+        input(type="hidden", name="removeUser" value=true)
+        input(type="submit" value="remove user")

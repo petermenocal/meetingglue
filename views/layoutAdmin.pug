@@ -1,0 +1,26 @@
+html
+  head
+    title=`${title} | Exhale | Premium cannabis dispenary in Las Vegas`
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    script(type='text/javascript', src='/js/imask.js')
+    script(type='text/javascript', src='/js/modal.js')
+    script(type='text/javascript', src='/js/phoneMask.js')
+    script(type='text/javascript', src='/js/menu.js')
+    style(type='text/css').
+      html {
+        visiblity: hidden;
+        opacity: 0; 
+      }
+    link(rel="stylesheet" href="/css/app.css")
+  body.sans-serif.bg-near-white
+    div#mobileNav.sidenav
+      if user
+        a(href="javascript:void(0)" onclick="closeNav()").closebtn &times;
+        a.f5.fw4.hover-white.no-underline.white-70.pv2.ph3(href='/admin') Dashboard
+        a.f5.fw4.hover-white.no-underline.white-70.dn.dib-l.pv2.ph3(href='/admin/') Users
+        a.f5.fw4.hover-white.no-underline.white-70.dn.dib-l.pv2.ph3(href='/admin/hotels') Hotels
+        a.f5.fw4.hover-white.no-underline.white-70.dn.dib-l.pv2.ph3(href='/admin/cvbs') CVBs
+        a.f5.fw4.hover-white.no-underline.white-70.dn.dib-l.pv2.ph3(href='/admin/features') Features
+        a.f5.fw4.hover-white.no-underline.white-70.dn.dib-l.pv2.ph3(href="/logout") Logout
+        a.f5.fw4.hover-white.no-underline.white-70.pv2.ph3(href='/logout') Logout
+    block content

@@ -1,0 +1,172 @@
+extends layoutAdmin
+
+block content
+  include navbarAdmin
+  .cf
+    .fl.w-100.bg-white
+      .mw8.center.db.pv3.near-black.bg-black-10.ph2.ba.b--black-10
+        - var messages = getMessages()
+        if messages
+          each msg in messages
+            .flex.items-center.justify-center.pa4.bg-light-green.navy.ba.b--green
+              svg.w1(data-icon='info', viewBox='0 0 32 32', style='fill:currentcolor')
+                title info icon
+                path(d='M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6')
+              span.lh-title.ml3= msg
+        form(method="POST" action=`/admin/edit/hotel`).tl.black.center
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          fieldset#ba.b--transparent.ph0.mh0
+            .fl.w-100
+              legend.f4.fw6.ph0.mv2 Editing
+              .fl.w-100.lh-title.green.mv2=`${foundProduct.title}`
+              .fl.w-100.lh-title.blue.ttu.mv2=`${foundProduct.city}`
+            .fl.w-100.pr2
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='name') Name
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='title' value=`${foundProduct.title}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='address') Address
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='address' value=`${foundProduct.address}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='city') City
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='city' value=`${foundProduct.city}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='zip') Zip
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='zip' value=`${foundProduct.zip}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='state') State
+                label.db.fw6.lh-copy.f6=`Currently set to: ${foundProduct.state}`
+                select(name='state')
+                  option(value='' selected=foundProduct.state=='') Update State
+                  option(value='AL' selected=foundProduct.state=='AL') Alabama
+                  option(value='AK' selected=foundProduct.state=='AK') Alaska
+                  option(value='AZ' selected=foundProduct.state=='AZ') Arizona
+                  option(value='AR' selected=foundProduct.state=='AR') Arkansas
+                  option(value='CA' selected=foundProduct.state=='CA') California
+                  option(value='CO' selected=foundProduct.state=='CO') Colorado
+                  option(value='CT' selected=foundProduct.state=='CT') Connecticut
+                  option(value='DE' selected=foundProduct.state=='DE') Delaware
+                  option(value='DC' selected=foundProduct.state=='DC') District Of Columbia
+                  option(value='FL' selected=foundProduct.state=='FL') Florida
+                  option(value='GA' selected=foundProduct.state=='GA') Georgia
+                  option(value='HI' selected=foundProduct.state=='HI') Hawaii
+                  option(value='ID' selected=foundProduct.state=='ID') Idaho
+                  option(value='IL' selected=foundProduct.state=='IL') Illinois
+                  option(value='IN' selected=foundProduct.state=='IN') Indiana
+                  option(value='IA' selected=foundProduct.state=='IA') Iowa
+                  option(value='KS' selected=foundProduct.state=='KS') Kansas
+                  option(value='KY' selected=foundProduct.state=='KY') Kentucky
+                  option(value='LA' selected=foundProduct.state=='LA') Louisiana
+                  option(value='ME' selected=foundProduct.state=='ME') Maine
+                  option(value='MD' selected=foundProduct.state=='MD') Maryland
+                  option(value='MA' selected=foundProduct.state=='MA') Massachusetts
+                  option(value='MI' selected=foundProduct.state=='MI') Michigan
+                  option(value='MN' selected=foundProduct.state=='MN') Minnesota
+                  option(value='MS' selected=foundProduct.state=='MS') Mississippi
+                  option(value='MO' selected=foundProduct.state=='MO') Missouri
+                  option(value='MT' selected=foundProduct.state=='MT') Montana
+                  option(value='NE' selected=foundProduct.state=='NE') Nebraska
+                  option(value='NV' selected=foundProduct.state=='NV') Nevada
+                  option(value='NH' selected=foundProduct.state=='NH') New Hampshire
+                  option(value='NJ' selected=foundProduct.state=='NJ') New Jersey
+                  option(value='NM' selected=foundProduct.state=='NM') New Mexico
+                  option(value='NY' selected=foundProduct.state=='NY') New York
+                  option(value='NC' selected=foundProduct.state=='NC') North Carolina
+                  option(value='ND' selected=foundProduct.state=='ND') North Dakota
+                  option(value='OH' selected=foundProduct.state=='OH') Ohio
+                  option(value='OK' selected=foundProduct.state=='OK') Oklahoma
+                  option(value='OR' selected=foundProduct.state=='OR') Oregon
+                  option(value='PA' selected=foundProduct.state=='PA') Pennsylvania
+                  option(value='RI' selected=foundProduct.state=='RI') Rhode Island
+                  option(value='SC' selected=foundProduct.state=='SC') South Carolina
+                  option(value='SD' selected=foundProduct.state=='SD') South Dakota
+                  option(value='TN' selected=foundProduct.state=='TN') Tennessee
+                  option(value='TX' selected=foundProduct.state=='TX') Texas
+                  option(value='UT' selected=foundProduct.state=='UT') Utah
+                  option(value='VT' selected=foundProduct.state=='VT') Vermont
+                  option(value='VA' selected=foundProduct.state=='VA') Virginia
+                  option(value='WA' selected=foundProduct.state=='WA') Washington
+                  option(value='WV' selected=foundProduct.state=='WV') West Virginia
+                  option(value='WI' selected=foundProduct.state=='WI') Wisconsin
+                  option(value='WY' selected=foundProduct.state=='WY') Wyoming
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='closestAirport') Closest airport
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='closestAirport' value=`${foundProduct.closestAirport}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='diamonds') Diamond rating
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='diamonds' value=`${foundProduct.diamonds}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='direcotSales') Director of Sales
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='direcotSales' value=`${foundProduct.direcotSales}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='directorCatering') Director of Catering
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='directorCatering' value=`${foundProduct.directorCatering}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='generalEmail') General email
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='generalEmail' value=`${foundProduct.generalEmail}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='largestRoom1') Largest room (1) sqft
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='largestRoom1' value=`${foundProduct.largestRoom1}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='largestRoom2') Largest room (2) sqft
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='largestRoom2' value=`${foundProduct.largestRoom2}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='loyaltyProgramName') Loyalty program name
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='loyaltyProgramName' value=`${foundProduct.loyaltyProgramName}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='meetingRoomsAmount') Meeting rooms amount 
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='meetingRoomsAmount' value=`${foundProduct.meetingRoomsAmount}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='numberOfSleepingRooms') Number of sleeping rooms
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='numberOfSleepingRooms' value=`${foundProduct.numberOfSleepingRooms}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='numberOfSuites') Number of suites
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='numberOfSuites' value=`${foundProduct.numberOfSuites}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='parkingFeeSelf') Self parking fee
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='parkingFeeSelf' value=`${foundProduct.parkingFeeSelf}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='parkingFeeValet') Valet parking fee
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='parkingFeeValet' value=`${foundProduct.parkingFeeValet}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='publicWifiFee') Public wifi fee
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='publicWifiFee' value=`${foundProduct.publicWifiFee}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='resortFee') Resort fee 
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='resortFee' value=`${foundProduct.resortFee}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='roomsTaxPercent') Rooms tax
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='roomsTaxPercent' value=`${foundProduct.roomsTaxPercent}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='salesEmail') Sales email
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='salesEmail' value=`${foundProduct.salesEmail}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='salesTax') Sales tax
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='salesTax' value=`${foundProduct.salesTax}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='salesTelephone') Sales telephone
+                input.pa2.input-reset.ba.b--black-30.w-100#phone(type='text' name='salesTelephone' value=`${foundProduct.salesTelephone}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='serviceChargePercent') Service charge  
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='serviceChargePercent' value=`${foundProduct.serviceChargePercent}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='twitter') Twitter
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='twitter' value=`${foundProduct.twitter}`)
+              
+              input(type="submit").mt4.fl.w-100.bg-green.pa3.white.ba.b--green.dim.pointer
+      .mw8.center.bg-black-30.pa3.black
+        label.db.fw6.lh-copy.f6(for='name') Upload image
+        form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data").form-group
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          label.form-label(for="avatar") Image
+          p
+            small Upload a picture for this entity.
+          input.form-input(type="file" name="avatar")
+          input.btn.mt-2(type="submit")
+          div.mt-2
+            h5 Current image:
+            if (foundProduct.avatarFilename)
+              img.avatar.avatar-xl(src=`/uploads/${foundProduct.avatarFilename}`)
+            if (!foundProduct.avatarFilename)
+              img.avatar.avatar-xl(src=`/image/avatar-placeholder.jpg`)
+      

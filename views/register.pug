@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  .fl.w-100.bg-black.white-80.pa5-ns
+    #error
+      if error
+        .flex.items-center.justify-center.pa4.bg-light-red.ba.b--red.mb3
+          svg.w1(data-icon='info', viewBox='0 0 32 32', style='fill:currentcolor')
+            title info icon
+            path(d='M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6')
+            if errors
+              each err in errors 
+                if err.param == "email"
+                  .error 
+                    .icon.icon-stop.mr-2
+                    span Email #{err.msg}
+                if err.param == "password1" || "password2"
+                  .error 
+                    .icon.icon-stop.mr-2
+                    span Password #{err.msg}
+            if error
+              .error #{error}
+          span.lh-title.ml3 Error: #{error}
+    .center.measure
+      .fl.w-100
+        form(action="/register", method="post").ph3
+          fieldset#sign_up.ba.b--transparent.ph0.mh0
+            legend.f4.fw6.ph0.mh0 Register
+            .mt3
+              label.db.fw6.lh-copy.f6(for='email') Email
+              input#email-address.pa3.input-reset.ba.b--white.bg-transparent.w-100.white(type='email', name='email' required)
+            .mv3
+              label.db.fw6.lh-copy.f6(for='password1') Password
+              input#password.b.pa3.input-reset.ba.b--white.bg-transparent.w-100.white(type='password', name='password1' required)
+            .mv3
+              label.db.fw6.lh-copy.f6(for='password2') Password
+              input#password1.b.pa3.input-reset.ba.b--white.bg-transparent.w-100.white(type='password', name='password2' required)
+            .mv3
+              label.db.fw6.lh-copy.f6(for='first_name') First name
+              input.b.pa3.input-reset.ba.b--white.bg-transparent.w-100.white(type='text', name='first_name' required)
+            .mv3
+              label.db.fw6.lh-copy.f6(for='last_name') Last name
+              input.b.pa3.input-reset.ba.b--white.bg-transparent.w-100.white(type='text', name='last_name' required)
+            .mv3
+              input.b.ph3.pv2.input-reset.ba.b--white.b--black.bg-purple.ba.b--purple.br2.white.grow.pointer.f6.dib(type='submit', value='Register')        

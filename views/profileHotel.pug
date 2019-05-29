@@ -1,0 +1,154 @@
+extends layout
+
+block content
+  .cf
+    .fl.w-100.bg-near-black.green
+      .fl.w-100.w-50-ns.pv3.ph3
+        .fl.w-100.f3.fw4=`${hotel.title}`
+        .fl.w-100.f5.fw4.gray=`Hotels`
+      .fl.w-100.w-50-ns.pv3.ph3.tr-ns
+        .fl.w-100.f3.fw4=`${hotel.address}`
+        .fl.w-100.f5.fw4.gray=`${hotel.city}`
+    .fl.w-100.bg-white
+      .fl.w-100.w-70-l.tc.bg-black
+        if !hotel.avatarFilename
+          img(src="/image/placeholder.png")
+        else
+          img(src=`/uploads/${hotel.avatarFilename}` style="height: 500px; width:100%; object-fit: cover !important")
+      .fl.w-100.w-30-l
+        table.f6.w-100.mw8.center(cellspacing='0').black
+          tbody.lh-copy
+          if (hotel.direcotSales)
+            tr.stripe-dark
+              td.pa1.b Director of Sales
+              td.pa1=`${hotel.direcotSales}`
+          if (hotel.directorCatering)
+            tr.stripe-dark
+              td.pa1.b Director of Catering
+              td.pa1=`${hotel.directorCatering}`
+          if (hotel.twitter)
+            tr.stripe-dark
+              td.pa1.b Twitter
+              td.pa1=`${hotel.twitter}`
+          if (hotel.numberOfSleepingRooms)
+            tr.stripe-dark
+              td.pa1.b Sleeping rooms
+              td.pa1=`${hotel.numberOfSleepingRooms}`
+          if (hotel.roomsTaxPercent)
+            tr.stripe-dark
+              td.pa1.b Rooms tax
+              td.pa1=`${hotel.roomsTaxPercent}%`
+          if (hotel.resortFee)
+            tr.stripe-dark
+              td.pa1.b Resort fee
+              td.pa1=`$${hotel.resortFee}`
+          if (hotel.salesTax)
+            tr.stripe-dark
+              td.pa1.b Sales tax
+              td.pa1=`${hotel.salesTax}%`
+          if (hotel.parkingFeeSelf)
+            tr.stripe-dark
+              td.pa1.b Self parking fee
+              td.pa1=`$${hotel.parkingFeeSelf}`
+          if (hotel.parkingFeeValet)
+            tr.stripe-dark
+              td.pa1.b Valet parking fee
+              td.pa1=`$${hotel.parkingFeeValet}`
+          if (hotel.meetingRoomsAmount)
+            tr.stripe-dark
+              td.pa1.b Number of meeting rooms
+              td.pa1=`${hotel.meetingRoomsAmount}`
+          if (hotel.largestRoom1)
+            tr.stripe-dark
+              td.pa1.b Largest room (1)
+              td.pa1=`${hotel.largestRoom1} sqft.`
+          if (hotel.largestRoom2)
+            tr.stripe-dark
+              td.pa1.b Largest room (2)
+              td.pa1=`${hotel.largestRoom2} sqft.`
+          if (hotel.publicWifiFee)
+            tr.stripe-dark
+              td.pa1.b Public WiFi fee
+              td.pa1=`$${hotel.publicWifiFee}`
+          if (hotel.serviceChargePercent)
+            tr.stripe-dark
+              td.pa1.b Service charge 
+              td.pa1=`${hotel.serviceChargePercent}%`
+          if (hotel.diamonds)
+            tr.stripe-dark
+              td.pa1.b Hotel rating
+              td.pa1=`${hotel.diamonds}`
+          if (hotel.loyaltyProgramName)
+            tr.stripe-dark
+              td.pa1.b Loyalty program
+              td.pa1=`${hotel.loyaltyProgramName}`
+          if (hotel.closestAirport)
+            tr.stripe-dark
+              td.pa1.b Closest airport
+              td.pa1=`${hotel.closestAirport}`
+          if (hotel.fitnessCenter)
+            tr.stripe-dark
+              td.pa1.b Fitness center?
+              td.pa1=`${hotel.fitnessCenter}`
+          if (hotel.hasPool)
+            tr.stripe-dark
+              td.pa1.b Pool?
+              td.pa1=`${hotel.hasPool}`
+          if (hotel.hasSpa)
+            tr.stripe-dark
+              td.pa1.b Spa?
+              td.pa1=`${hotel.hasSpa}`
+      .fl.w-100.bg-black-90.gold.tc
+        h1 Media &amp; Downloads
+        .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Capacity chart        
+          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Meeting space diagram   
+          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Banquet menu
+          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white AV menu
+      .fl.w-100.bg-navy.pa3
+        .fl.w-50-l.w-100
+          .f3.fw5.whitesmoke.lh-title.green Location performance
+          .f5.fw2.lh-copy.mb2.light-green Planners just like you help venues get a better idea of how they perform based on feedback you can provide below.
+          form.cf
+            label.br2.ba.b--navy.w-100.fl.pv2(for="attendance") How many people in attendance? 
+            input.br2.ba.b--navy.w-100.fl.pa2(type="number" name="attendance")
+            label.br2.ba.b--navy.w-100.fl.pv2(for="daysOfProgram") How many days was the program?
+            input.br2.ba.b--navy.w-100.fl.pa2(type="number" name="daysOfProgram")
+            label.br2.ba.b--navy.w-100.fl.pv2(for="sleepingRooms") How many sleeping rooms?
+            input.br2.ba.b--navy.w-100.fl.pa2(type="number" name="sleepingRooms")
+            input(type="submit" value="Submit").bg-green.white.pa2.ba.b--green.br2.mt2.fr.dim.pointer
+        .fl.w-50-l.w-100.mt3.mt0-ns.ph4
+          .f3.fw5.green Protips
+          .f5.fw2.light-green The pros know best. Share tips about this property with other planners.
+          ul.list.pl0
+            li.mt2.b.f4.fw2.gold Grade the following based on your event at this property
+            li.mt2.light-blue Sales contracting process
+            li.mt2.light-blue Service experience onsite
+            li.mt2.light-blue Group food and beverage quality   
+            li.mt2.light-blue Would you consider this venue for another event?
+            li.mt2.light-blue Did you encounter any issues during your event?
+          input
+      .fl.w-100.bg-black.white.pa3
+        .fl.f3.b.fw5.w-100.lh-title.gold
+          p Nearby events 
+          each e in hotel.events
+            a(href=e.url).link.white-70
+              .fl.w-third-ns.w-100.pr4
+                div.lh-copy.f6.measure= e.start_time.substr(0, 10)
+                div.lh-copy.f5.measure-narrow.green= e.title
+                div.lh-copy.f6.measure= e.venue_name
+
+      .fl.w-100.bg-white
+        .fl.w-100.w-30-l
+          iframe(src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3155.3145166859163!2d-122.194883!3d37.735765!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4e8f2f9e81606f24!2sBest+Western+Plus+Airport+Inn+%26+Suites!5e0!3m2!1sen!2sus!4v1557869025412!5m2!1sen!2sus" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen)
+        .fl.w-100.w-70-l
+          .flex.flex-row.flex-wrap.justify-around
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2

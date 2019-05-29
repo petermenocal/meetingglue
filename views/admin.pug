@@ -1,0 +1,22 @@
+extends layoutAdmin
+
+block content
+  include navbarAdmin
+  .cf
+    .fl.w-100
+      .mw8.center.db.pa3.near-black
+        .fl.w-50-ns.w-100.tc.pa3
+          .card.shadow-1.bg-light-green.ba.b--black-10
+            h1.f1.fw1.mb0= users.length.toLocaleString()
+            p.f3.fw2.mt0.gray users
+        if hotels
+          .fl.w-50-ns.w-100.tc.pa3
+            .card.shadow-1.bg-light-green.ba.b--black-10
+              h1.f1.fw1.mb0= hotels.length.toLocaleString()
+              p.f3.fw2.mt0.gray hotels
+        if cvbs
+          .fl.w-50-ns.w-100.tc.pa3
+            .card.shadow-1.bg-light-green.ba.b--black-10
+              h1.f1.fw1.mb0= cvbs.length.toLocaleString()
+              p.f3.fw2.mt0.gray cvbs
+          

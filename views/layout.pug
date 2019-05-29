@@ -1,0 +1,35 @@
+html
+  head
+    title=`${title} | Meeting Glue | A place for planners and suppliers,.`
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    script(type='text/javascript', src='/js/imask.js')
+    script(type='text/javascript', src='/js/modal.js')
+    script(type='text/javascript', src='/js/phoneMask.js')
+    script(type='text/javascript', src='/js/menu.js')
+    script(type='text/javascript' src='/js/moment.js')
+    script(type='text/javascript' src='/js/datepicker.js')
+    link(rel="stylesheet" href="/css/flatpickr.css")
+    script(src="/js/flatpickr.js")
+    style(type='text/css').
+      html {
+        visiblity: hidden;
+        opacity: 0; 
+      }
+    link(rel="stylesheet" href="/css/app.css")
+  body.sans-serif
+    include navbar
+    div#mobileNav.sidenav
+      a(href="javascript:void(0)" onclick="closeNav()").closebtn &times;
+      a.f5.fw4.hover-white.no-underline.white-70.pb2.ph3(href='/') Home
+      a.f5.fw4.hover-white.no-underline.white-70.pb2.ph3(href='/hotels') Hotels
+      a.f5.fw4.hover-white.no-underline.white-70.pb2.ph3(href='/cvbs') CVBs
+      if !user
+        a.f5.fw4.hover-white.no-underline.white-70.pb2.ph3(href='/login') Log in
+        a.f5.fw4.hover-white.no-underline.white-70.pb2.ph3(href='/register') Register
+      if user
+        a.f5.fw4.hover-white.no-underline.white-70.pb2.ph3(href='/profile') My profile
+        a.f5.fw4.hover-white.no-underline.white-70.pb2.ph3(href='/logout') Logout
+    .mw9.center.cf
+      block content
+      .fl.w-100.tc.pv3.bg-near-black.green
+        span Meeting Glue &copy; 2019

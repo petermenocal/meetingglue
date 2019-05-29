@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  include navbar 
+  .fl.w-100.tc.pb4.bg-texture.fixed-bg-ns
+    h3.f1 Contact
+  .fl.w-100.bg-near-white.pb5
+    .center.mw7.bg-white(style="margin-top: -60px").h-100.ba.b--black-10.shadow-5.black-70.pa4
+      h4.tc.lh-copy.mb5.measure.center We're here to answer any questions you have about Exhale Brands, our products, or anything else you might want to ask!
+      .fl.w-100.w-third-ns.tc
+        h4.f4.fw4.black.ttu.tracked Call us
+        a(href="tel:+17024471250").dim.pointer.no-underline
+          h5.black-40 (702) 447-1250
+      .fl.w-100.w-third-ns.tc
+        h4.f4.fw4.black.ttu.tracked Find us
+        a(href="http://maps.apple.com/?daddr=4310+W+Flamingo+Road+Las+Vegas+NV+89103&dirflg=d&t=h").dim.pointer.no-underline
+          h5.black-40.lh-title 4310 W Flamingo Road<br/>Las Vegas, NV 89118
+      .fl.w-100.w-third-ns.tc
+        h4.f4.fw4.black.ttu.tracked Hours
+        h5.black-40 Monday - Sunday (8am - 3am)
+      .fl.w-100
+        form.measure.center.mt5
+          fieldset#sign_up.ba.b--transparent.ph0.mh0
+            legend.f4.fw6.ph0.mh0 GET IN TOUCH
+            p.measure We're also interested in any feedback you'd like to share. Please fill out the form below, and we will respond as soon as we can.
+            .mt3
+              label.db.fw6.lh-copy.f6(for='email-address') Your Email
+              input#email-address.pa2.input-reset.ba.bg-transparent.w-100.pa3(type='email', name='email-address')
+            .mv3
+              label.db.fw6.lh-copy.f6(for='message') Message
+              textarea.b.pa2.input-reset.ba.bg-transparent.w-100.pa3(name="message")
+          div
+            input.b.ph3.pv2.input-reset.ba.b--black.bg-transparent.grow.pointer.f6.dib(type='submit', value='Send message')
