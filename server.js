@@ -178,9 +178,9 @@ mongoUtil.connectToServer(function(err) {
     const httpServer = http.createServer(insecureApp);
     const httpsServer = https.createServer(credentials, app);
 
-    insecureApp.all("*", (req, res) =>
-      res.redirect(301, "https://meetingglue.com" + req.url)
-    );
+    // insecureApp.all("*", (req, res) =>
+    //   res.redirect(301, "https://meetingglue.com" + req.url)
+    // );
 
     httpServer.listen(80, () => {
       console.log("HTTP Server running on port 80");
