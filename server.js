@@ -156,31 +156,31 @@ mongoUtil.connectToServer(function(err) {
   app.use("/logout", logoutRouter);
 
   if (process.env.ENVIRONMENT === "prod") {
-    // const privateKey = fs.readFileSync(
-    //   "/etc/letsencrypt/live/exhalebrands.com/privkey.pem",
-    //   "utf8"
-    // );
-    // const certificate = fs.readFileSync(
-    //   "/etc/letsencrypt/live/exhalebrands.com/cert.pem",
-    //   "utf8"
-    // );
-    // const ca = fs.readFileSync(
-    //   "/etc/letsencrypt/live/exhalebrands.com/chain.pem",
-    //   "utf8"
-    // );
+    const privateKey = fs.readFileSync(
+      "/etc/letsencrypt/live/meetingglue.com/privkey.pem",
+      "utf8"
+    );
+    const certificate = fs.readFileSync(
+      "/etc/letsencrypt/live/meetingglue.com/cert.pem",
+      "utf8"
+    );
+    const ca = fs.readFileSync(
+      "/etc/letsencrypt/live/meetingglue.com/chain.pem",
+      "utf8"
+    );
 
-    // const credentials = {
-    //   key: privateKey,
-    //   cert: certificate,
-    //   ca: ca
-    // };
+    const credentials = {
+      key: privateKey,
+      cert: certificate,
+      ca: ca
+    };
 
     const httpServer = http.createServer(insecureApp);
     const httpsServer = https.createServer(credentials, app);
 
-    // insecureApp.all("*", (req, res) =>
-    //   res.redirect(301, "https://meetingglue.com" + req.url)
-    // );
+    insecureApp.all("*", (req, res) =>
+      res.redirect(301, "https://meetingglue.com" + req.url)
+    );
 
     httpServer.listen(80, () => {
       console.log("HTTP Server running on port 80");
