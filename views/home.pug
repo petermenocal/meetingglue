@@ -17,7 +17,7 @@ block content
   .fl.w-100.bg-black
     .cf.center(style="max-width: 90%")
       .fl.w-third-l.w-100.ph2
-        h1 Industry News
+        h1 New Openings
         .fl.w-100.mb3
           .dtc.v-mid.cover.h5.tc.pa3.w-100(style='background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/image/tmp.jpg); background-size: cover;')
             .f6.fw2.bg-black.white.br2.pa1.mb2(style="max-width: 100px") CATEGORY
@@ -32,24 +32,11 @@ block content
       .fl.w-third-l.w-100.ph2
         h1 Industry News
         .fl.w-70.bg-near-black.pa3.relative
-          .flex.flex-row.h4.items-center.justify-center.h3
-            .w-20.f2.fw6 1
-            .w-80 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          .flex.flex-row.h4.items-center.justify-center.h3
-            .w-20.f2.fw6 2
-            .w-80 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          .flex.flex-row.h4.items-center.justify-center.h3
-            .w-20.f2.fw6 3
-            .w-80 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          .flex.flex-row.h4.items-center.justify-center.h3
-            .w-20.f2.fw6 4
-            .w-80 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          .flex.flex-row.h4.items-center.justify-center.h3
-            .w-20.f2.fw6 5
-            .w-80 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          .flex.flex-row.h4.items-center.justify-center.h3
-            .w-20.f2.fw6 6
-            .w-80 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          each n in news
+            .flex.flex-column.h4.items-center.justify-center.h3
+              a.w-100.f5.fw6.light-blue.dim.pointer(href=n.link target="_blank" rel="noopener")= n.title
+              .w-100.f6.fw4.white.mt1= n.pubDate.substr(0, 17)
+              .w-100.f6.fw4.gray.mt2=`by ${n.creator}`
 
       .fl.w-third-l.w-100.ph2
         h1 Industry News

@@ -4,9 +4,18 @@ block content
   .fl.w-100.bg-near-black.tc
     h1.green Hotels
     .mv3  
-      a.link.no-underline.whitesmoke.dim.white.pointer.mr2 Show all
-      a.link.no-underline.whitesmoke.dim.white.pointer.mr2(href="hotels?state=CA") California
-      a.link.no-underline.whitesmoke.dim.white.pointer(href="hotels?state=VA") Virginia
+      if !state 
+        a.link.no-underline.whitesmoke.dim.green.pointer.mr2(href="hotels") All
+      else
+        a.link.no-underline.whitesmoke.dim.white.pointer.mr2(href="hotels") All
+      if state === "CA"
+        a.link.no-underline.whitesmoke.dim.green.pointer.mh4(href="hotels?state=CA") California
+      else 
+        a.link.no-underline.whitesmoke.dim.white.pointer.mh4(href="hotels?state=CA") California
+      if state === "VA"
+        a.link.no-underline.whitesmoke.dim.green.pointer(href="hotels?state=VA") Virginia
+      else 
+        a.link.no-underline.whitesmoke.dim.white.pointer(href="hotels?state=VA") Virginia
   .fl.w-100.bg-white
     ul.list.pl0.mt0
       each h in hotels

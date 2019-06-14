@@ -39,6 +39,7 @@
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "rss-parser": "^3.7.1",
     "simple-rate-limiter": "^0.2.3",
     "twit": "^2.2.11",
     "uuid": "^3.3.2",

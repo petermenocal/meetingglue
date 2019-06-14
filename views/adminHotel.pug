@@ -21,6 +21,24 @@ block content
               .fl.w-100.lh-title.green.mv2=`${foundProduct.title}`
               .fl.w-100.lh-title.blue.ttu.mv2=`${foundProduct.city}`
             .fl.w-100.pr2
+              .mv3.cf.bg-black-10.pa2
+                .f5.fw5 Featured on front page?
+                if foundProduct.featured 
+                  .flex.flex-row.items-center
+                    input(type='radio', name='featured', value='true' checked)
+                    p.ml2 Yes
+                if !foundProduct.featured 
+                  .flex.flex-row.items-center
+                    input(type='radio', name='featured', value='true')
+                    p.ml2 Yes
+                if foundProduct.featured 
+                  .flex.flex-row.items-center
+                    input(type='radio', name='featured', value='false')
+                    p.ml2 No
+                if !foundProduct.featured
+                  .flex.flex-row.items-center
+                    input(type='radio', name='featured', value='false' checked)
+                    p.ml2 No
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='name') Name
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='title' value=`${foundProduct.title}`)
