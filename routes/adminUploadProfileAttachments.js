@@ -6,7 +6,6 @@ var mongoUtil = require("../utils/mongoUtil");
 var ObjectID = require("mongodb").ObjectID;
 
 /* GET home page. */
-
 router.post("/", localQuery, function(req, res, next) {
   if (req.isAuthenticated()) {
     var objId = req.body.id;
@@ -20,11 +19,12 @@ router.post("/", localQuery, function(req, res, next) {
     let id = req.body.id;
     let fileExtension = mime.extension(avatar.mimetype);
     var db = mongoUtil.getDb();
+
     avatar.mv(`public/uploads/${id}.${fileExtension}`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
-      db.collection("cvbs").findOneAndUpdate(
+      db.collection("hotels").findOneAndUpdate(
         { _id: ObjectID(objId) },
         {
           $set: { avatarFilename: `${id}.${fileExtension}` }

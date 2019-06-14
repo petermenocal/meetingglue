@@ -170,3 +170,50 @@ block content
             if (!foundProduct.avatarFilename)
               img.avatar.avatar-xl(src=`/image/avatar-placeholder.jpg`)
       
+      .mw8.center.bg-black.pa3.near-white
+        .f2.fw3 Profile attachments
+
+      .mw8.center.bg-black.pa3.near-white.bb.b--white-20
+        label.db.fw6.lh-copy.f6(for='name') Upload capacity chart
+        if (foundProduct.menu_capacity)
+          .pv3.green
+            a(href=`/uploads/${foundProduct._id}/${foundProduct.menu_capacity}`).link.no-underline.blue Preview existing file
+        form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data").form-group
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          input(type="hidden", name="payload_type" value=`menu_capacity`)
+          input.form-input(type="file" name="menu_capacity")
+          input.btn.mt-2(type="submit")
+
+      .mw8.center.bg-black.pa3.near-white.bb.b--white-20
+        label.db.fw6.lh-copy.f6(for='name') Upload meeting space diagram
+        if (foundProduct.menu_space)
+          .pv3.green
+            a(href=`/uploads/${foundProduct._id}/${foundProduct.menu_space}`).link.no-underline.blue Preview existing file
+        form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data").form-group
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          input(type="hidden", name="payload_type" value=`menu_space`)
+          input.form-input(type="file" name="menu_space")
+          input.btn.mt-2(type="submit")
+          
+      .mw8.center.bg-black.pa3.near-white.bb.b--white-20
+        label.db.fw6.lh-copy.f6(for='name') Upload banquet menu
+        if (foundProduct.menu_banquet)
+          .pv3.green
+            a(href=`/uploads/${foundProduct._id}/${foundProduct.menu_banquet}`).link.no-underline.blue Preview existing file
+        form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data").form-group
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          input(type="hidden", name="payload_type" value=`menu_banquet`)
+          input.form-input(type="file" name="menu_banquet")
+          input.btn.mt-2(type="submit")
+
+      .mw8.center.bg-black.pa3.near-white.bb.b--white-20
+        label.db.fw6.lh-copy.f6(for='name') Upload AV menu
+        if (foundProduct.menu_av)
+          .pv3.green
+            a(href=`/uploads/${foundProduct._id}/${foundProduct.menu_av}`).link.no-underline.blue Preview existing file
+        form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data").form-group
+          input(type="hidden", name="id" value=`${foundProduct._id}`)
+          input(type="hidden", name="payload_type" value=`menu_av`)
+          input.form-input(type="file" name="menu_av")
+          input.btn.mt-2(type="submit")
+          
