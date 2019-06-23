@@ -14,7 +14,7 @@ router.get("/", localQuery, function(req, res, next) {
     }
     db.collection("hotels")
       .find(query)
-      .sort({ title: -1 })
+      .sort({ title: 1 })
       .toArray(function(err, result) {
         if (err) throw err;
         res.render("adminHotels", {
