@@ -27,6 +27,7 @@ router.post("/", function(req, res, next) {
     var statusCode = response.statusCode;
     var results = [];
     results.push(body.d[0], body.d[1]);
+    console.log(results);
     var db = mongoUtil.getDb();
     db.collection("hotels").update(
       {
