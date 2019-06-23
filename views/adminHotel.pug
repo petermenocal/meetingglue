@@ -109,7 +109,7 @@ block content
                   option(value='WY' selected=foundProduct.state=='WY') Wyoming
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='closestAirport') Find closest airports
-                form(action="/airport" metohd="POST")
+                form(action="/airport" method="POST")
                   input(type="hidden" name="location" value=`${foundProduct.zip}`) 
                   input(type="submit")
               .mv3

@@ -35,7 +35,7 @@ router.post("/", function(req, res, next) {
       { closestAirport: results },
       function(err, success) {
         if (err) throw new Error(err);
-        res.json(success);
+        res.back();
       }
     );
   });
