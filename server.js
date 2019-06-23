@@ -118,6 +118,7 @@ mongoUtil.connectToServer(function(err) {
   var profileRouter = require("./routes/profile");
   var logoutRouter = require("./routes/logout");
   var eventSearchRouter = require("./routes/eventSearch");
+  var airportSearchRouter = require("./routes/airportSearch");
 
   // routers -> api + utils
   var uploadRouter = require("./routes/upload");
@@ -150,6 +151,7 @@ mongoUtil.connectToServer(function(err) {
   app.use("/hotel", profileHotelRouter);
   app.use("/cvb", profileCVBRouter);
   app.use("/event", eventSearchRouter);
+  app.use("/airport", airportSearchRouter);
   app.use("/login", loginRouter);
   app.use("/register", registerRouter);
   app.use("/profile", profileRouter);

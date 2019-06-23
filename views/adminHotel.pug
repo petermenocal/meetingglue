@@ -108,8 +108,10 @@ block content
                   option(value='WI' selected=foundProduct.state=='WI') Wisconsin
                   option(value='WY' selected=foundProduct.state=='WY') Wyoming
               .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='closestAirport') Closest airport
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='closestAirport' value=`${foundProduct.closestAirport}`)
+                label.db.fw6.lh-copy.f6.mt3(for='closestAirport') Find closest airports
+                form(action="/airport" metohd="POST")
+                  input(type="hidden" name="location" value=`${foundProduct.zip}`) 
+                  input(type="submit")
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='diamonds') Diamond rating
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='diamonds' value=`${foundProduct.diamonds}`)
