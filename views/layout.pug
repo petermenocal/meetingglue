@@ -9,6 +9,14 @@ html
     script(type='text/javascript' src='/js/moment.js')
     script(type='text/javascript' src='/js/datepicker.js')
     link(rel="stylesheet" href="/css/flatpickr.css")
+    script(type='text/javascript', src="https://cdn.apple-mapkit.com/mk/5.0.0/mapkit.js")
+    script.
+      mapkit.init({
+          authorizationCallback: function(done) {
+              done("eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlhWUDU3Mlk5Q1oifQ.eyJpc3MiOiJOUDVESk1KTloyIiwiaWF0IjoxNTU5OTI2NTk2Ljc1NDg1MSwiZXhwIjoxNzQyMzA2Mzk2Ljc1NDg1MX0.ejbPJx-ZbLASAplKP4lmYV3-XsD00IGvfL8Jt-NtGB4RImfdTu9j4TTCkrYnsnv4dmiqWWNF3NhwIIlXRkhLXA");
+          },
+          language: "en"
+      });
     script(src="/js/flatpickr.js")
     style(type='text/css').
       html {

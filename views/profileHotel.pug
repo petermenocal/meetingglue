@@ -139,8 +139,25 @@ block content
                 div.lh-copy.f6.measure= e.venue_name
 
       .fl.w-100.bg-white
-        .fl.w-100.w-30-l
-          iframe(src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3155.3145166859163!2d-122.194883!3d37.735765!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4e8f2f9e81606f24!2sBest+Western+Plus+Airport+Inn+%26+Suites!5e0!3m2!1sen!2sus!4v1557869025412!5m2!1sen!2sus" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen)
+        .fl.w-100.w-50-l.bg-gray.h-50#mapContainer
+        script.
+          var center = new mapkit.Coordinate(36.116000, -115.198920),
+            span = new mapkit.CoordinateSpan(0.0250, 0.0250),
+            region = new mapkit.CoordinateRegion(center, span);
+          var annotation = new mapkit.MarkerAnnotation(center, {
+            title: "Exhale Nevada",
+            subtitle: "4310 W Flamingo Road.",
+            glyphText: "×",
+            color: "#00000",
+            displayPriority: 1000
+          });
+          var map = new mapkit.Map("mapContainer", {
+            region: region,
+            showsCompass: mapkit.FeatureVisibility.Hidden,
+            showsZoomControl: false,
+            showsMapTypeControl: false
+          });
+          map.addAnnotation(annotation);
         .fl.w-100.w-70-l
           .flex.flex-row.flex-wrap.justify-around
             img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
