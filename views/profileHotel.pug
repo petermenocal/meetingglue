@@ -99,14 +99,19 @@ block content
               td.pa1.b Spa?
               td.pa1=`${hotel.hasSpa}`
       .fl.w-100.bg-black-90.gold.tc
-        h1 Media &amp; Downloads
-        .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
-          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Capacity chart        
-          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Meeting space diagram   
-          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Banquet menu
-          button.pa3.ba.b--green.br2.dim.pointer.bg-green.white AV menu
+        .fl.w-50-ns.w-100.ph3
+          h1 Promotions
+          .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+            span fdsafdsa
+        .fl.w-50-ns.w-100.ph3
+          h1 Media &amp; Downloads
+          .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Capacity chart        
+            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Meeting space diagram   
+            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Banquet menu
+            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white AV menu
       .fl.w-100.bg-navy.pa3
-        .fl.w-50-l.w-100
+        .fl.w-50-ns.w-100
           .f3.fw5.whitesmoke.lh-title.green Location performance
           .f5.fw2.lh-copy.mb2.light-green Planners just like you help venues get a better idea of how they perform based on feedback you can provide below.
           form.cf
@@ -117,7 +122,7 @@ block content
             label.br2.ba.b--navy.w-100.fl.pv2(for="sleepingRooms") How many sleeping rooms?
             input.br2.ba.b--navy.w-100.fl.pa2(type="number" name="sleepingRooms")
             input(type="submit" value="Submit").bg-green.white.pa2.ba.b--green.br2.mt2.fr.dim.pointer
-        .fl.w-50-l.w-100.mt3.mt0-ns.ph4
+        .fl.w-50-ns.w-100.mt3.mt0-ns.ph4
           .f3.fw5.green Protips
           .f5.fw2.light-green The pros know best. Share tips about this property with other planners.
           ul.list.pl0
@@ -129,7 +134,7 @@ block content
             li.mt2.light-blue Did you encounter any issues during your event?
           input
       .fl.w-100.bg-black.white.pa3
-        .fl.f3.b.fw5.w-100.lh-title.gold
+        .fl.f3.b.fw5.w-100.w-50-ns.lh-title.gold
           p Nearby events 
           each e in hotel.events
             a(href=e.url).link.white-70
@@ -137,9 +142,18 @@ block content
                 div.lh-copy.f6.measure= e.start_time.substr(0, 10)
                 div.lh-copy.f5.measure-narrow.green= e.title
                 div.lh-copy.f6.measure= e.venue_name
+        .fl.f3.b.fw5.w-100.w-50-ns.lh-title.gold
+          p Twitter
+          each t in tweets
+            a.dt.w-100.bb.b--black-05.pb2.mt2.link.no-underline.dim.pointer(href=`https://twitter.com/${hotel.twitter}/status/${t.id_str}`)
+              .dtc.w2.w3-ns.v-mid
+                img.ba.b--black-10.db.br2.w2.w3-ns.h2.h3-ns(src=`${t.user.profile_image_url}`)
+              .dtc.v-mid.pl3
+                .f6.fw4.lh-title.light-green.mv0=`${t.text}` 
+                .f6.fw4.mt0.mb0.gold 
 
       .fl.w-100.bg-white
-        .fl.w-100.w-50-l.bg-gray.h-50#mapContainer
+        .fl.w-100.w-30-ns.bg-gray#mapContainer(style="height: 100%")
         script.
           var center = new mapkit.Coordinate(36.116000, -115.198920),
             span = new mapkit.CoordinateSpan(0.0250, 0.0250),
@@ -158,14 +172,28 @@ block content
             showsMapTypeControl: false
           });
           map.addAnnotation(annotation);
-        .fl.w-100.w-70-l
-          .flex.flex-row.flex-wrap.justify-around
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
-            img(src="/image/smartstart.png" height="150" width="auto").br2.shadow-2.dim.pointer.ma2
+        .fl.w-100.w-70-ns
+          .flex.flex-row.flex-wrap
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+            
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+            
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+            
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+            
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+            
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+            
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+            
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer

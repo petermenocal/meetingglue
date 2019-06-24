@@ -6,10 +6,17 @@ var ObjectId = require("mongodb").ObjectID;
 var eventful = require("eventful-node");
 var client = new eventful.Client("MqT92mHZj8rk5xwx");
 var _ = require("lodash");
+var Twit = require("twit");
 
 router.get("/:id", localQuery, function(req, res, next) {
   var db = mongoUtil.getDb();
   var hotelId = req.params.id;
+  var T = new Twit({
+    consumer_key: "lE3xRhMnu2vu1hrnRwP0CZgRN",
+    consumer_secret: "LQt4QH66okjWahikdDn2PPA0hREjdN2RcsuuvAk5WizBfNj2ph",
+    access_token: "265805403-6cPMdiOttt4hfFQlFEeliFbyQMObCWkY67QGv7lk",
+    access_token_secret: "f0itACktYeSakP9K3yhwv5fFyrWhQZo1rhLrh9sNTbAwY"
+  });
   if (!hotelId) {
     throw Error;
   }
@@ -21,6 +28,11 @@ router.get("/:id", localQuery, function(req, res, next) {
     result
   ) {
     if (err) throw Error;
+    var tweets;
+    var options = { screen_name: result.twitter, count: 2 };
+    T.get("statuses/user_timeline", options, function(err, data) {
+      tweets = data;
+    });
     client.searchEvents(
       { location: `${result.city}, ${result.state}` },
       function(err, data) {
@@ -37,7 +49,8 @@ router.get("/:id", localQuery, function(req, res, next) {
         res.render("profileHotel", {
           title: "Hotel Profile",
           page_name: "profile_hotel",
-          hotel: result
+          hotel: result,
+          tweets: tweets
         });
       }
     );
