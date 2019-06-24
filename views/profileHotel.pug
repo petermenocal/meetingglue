@@ -99,17 +99,28 @@ block content
               td.pa1.b Spa?
               td.pa1=`${hotel.hasSpa}`
       .fl.w-100.bg-black-90.gold.tc
-        .fl.w-50-ns.w-100.ph3
-          h1 Promotions
-          .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
-            span fdsafdsa
-        .fl.w-50-ns.w-100.ph3
-          h1 Media &amp; Downloads
-          .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
-            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Capacity chart        
-            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Meeting space diagram   
-            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white Banquet menu
-            button.pa3.ba.b--green.br2.dim.pointer.bg-green.white AV menu
+        if (!hotel.menu_capcity && !hotel.menu_space && !hotel.menu_banquet && !hotel.menu_av) 
+          .fl.w-100.ph3
+            h1 Promotions
+            .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+              img(src="/image/smartstart.png" height="200px" width="auto").br2.shadow-2.dim.pointer
+        else 
+          .fl.w-100.ph3
+            h1 Promotions
+            .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+        if (hotel.menu_capcity || hotel.menu_space || hotel.menu_banquet || hotel.menu_av) 
+          .fl.w-50-ns.w-100.ph3
+            h1 Media &amp; Downloads
+            .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+              if (hotel.menu_capacity)
+                a(href=`/uploads/${hotel._id}/${hotel.menu_capacity}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white Capacity chart        
+              if (hotel.menu_capacity)
+                a(href=`/uploads/${hotel._id}/${hotel.menu_space}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white Meeting space diagram   
+              if (hotel.menu_capacity)
+                a(href=`/uploads/${hotel._id}/${hotel.menu_banquet}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white Banquet menu
+              if (hotel.menu_capacity)
+                a(href=`/uploads/${hotel._id}/${hotel.menu_av}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white AV menu
       .fl.w-100.bg-navy.pa3
         .fl.w-50-ns.w-100
           .f3.fw5.whitesmoke.lh-title.green Location performance
