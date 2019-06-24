@@ -16,7 +16,7 @@ router.get("/:productId", localQuery, function(req, res, next) {
     ) {
       if (err) throw err;
       res.render("adminHotel", {
-        title: "Product admin",
+        title: "Hotel admin",
         user: req.user,
         page_name: "admin_product",
         foundProduct: result

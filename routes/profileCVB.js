@@ -30,7 +30,7 @@ router.get("/:id", localQuery, function(req, res, next) {
     db.collection("hotels")
       .find({ city: result.city })
       .toArray(function(err, result2) {
-        var options = { screen_name: result.twitter, count: 5 };
+        var options = { screen_name: result.twitter, count: 2 };
         var userTweets;
         T.get("statuses/user_timeline", options, function(err, data) {
           userTweets = data;

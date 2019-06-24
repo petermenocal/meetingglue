@@ -3,6 +3,7 @@ var router = express.Router();
 var localQuery = require("../utils/localQuery");
 var mongoUtil = require("../utils/mongoUtil");
 var request = require("request");
+var ObjectID = require("mongodb").ObjectID;
 
 /* GET home page. */
 router.post("/", function(req, res, next) {
@@ -27,16 +28,27 @@ router.post("/", function(req, res, next) {
     var statusCode = response.statusCode;
     var results = [];
     results.push(body.d[0], body.d[1]);
-    console.log(results);
     var db = mongoUtil.getDb();
-    db.collection("hotels").update(
+    db.collection("hotels").findOneAndUpdate(
       {
-        zip: location
+        _id: ObjectID(req.body.entity_id)
       },
-      { closestAirport: results },
-      function(err, success) {
+      {
+        $set: {
+          closestAirport: `${results[0].Code} ${Math.round(
+            results[0].Distance * 100
+          ) / 100}mi. | ${results[1].Code} ${Math.round(
+            results[1].Distance * 100
+          ) / 100}mi.`
+        }
+      },
+      {
+        returnOriginal: true
+      },
+      function(err, results) {
         if (err) throw new Error(err);
-        res.back();
+        console.log(err, results);
+        res.redirect("back");
       }
     );
   });
