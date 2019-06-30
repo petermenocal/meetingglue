@@ -1,0 +1,56 @@
+extends layout
+
+block content
+  .fl.w-100.ph3.bg-near-black
+    h1 RFPs
+    button.pa3.bg-green.white.ba.b--green.shadow-1.dim.pointer New RFP
+  .fl.w-100.bg-white.pa3
+    .mw7.center.black
+      .f4.fw3.green Request for proposal
+      .mv3
+        label.db.fw6.lh-copy.f6(for="group_profile") Group profile
+        input(type="text").pa2.w-100.input-reset.bg-white.ba.b--black-30
+      .mv3
+        label.db.fw6.lh-copy.f6(for="proposal_deadline") Proposal deadline
+        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#proposal_deadline
+      .mv3
+        label.db.fw6.lh-copy.f6(for="decision_date") Decision date 
+        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#decision_date
+      .mv3
+        label.db.fw6.lh-copy.f6 Program
+        select
+          option(selected value="rooms_only") Rooms only
+      .mv3
+        label.db.fw6.lh-copy.f6 Date range
+        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#pick
+      .mv3
+        label.db.fw6.lh-copy.f6 Date selection (multiple/pattern)
+        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#pick_multi
+    #app.overflow-auto(style="-webkit-overflow-scrolling: touch")
+      table.black.f6.w-100.mw8.center
+        thead
+        tbody
+          tr#date-row
+    .fl.w-100
+      h4 billing arrangements
+      h4 Hot buttons
+              
+                
+  //- Contact:   George Yin
+  //- Phone:	   202-495-0828
+  //- Email:	   George@yinhospitality.com
+
+  //- Proposal Deadline: January 30, 2019
+  //- Decision Date: February 2019
+
+  //- Group Profile: Vivafest 2019  Vegas International Variety Act Festival (VIVAFest). www.vivafest.com 
+
+  //- Program: Rooms Only
+
+
+  //- Here is a sample rooms only RFP. The room block, dates, rates should be standard items on the form.
+
+  //- Yellow items are answers that can be pulled from the hotel “fact sheet”
+  //- Blue items are custom concessions that the planner can choose to add when building the rfp
+
+  //- Let me know if this doesn’t make sense. Should be pretty straight forward.

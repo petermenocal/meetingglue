@@ -1,41 +1,42 @@
 extends layout
 
 block content
-  .fl.w-100.ph3.bg-near-black
-    h1 RFPs
-    button.pa3.bg-green.white.ba.b--green.shadow-1.dim.pointer New RFP
+  .w-100.bg-near-black.flex.flex-row.items-center.justify-center.pa3
+    .w-50.f2.fw2 JOEGEE1122
+    .w-50.f4.fw2.gray Planner &middot; Las Vegas, NV
   .fl.w-100.bg-white.pa3
-    .mw7.center.black
-      .f4.fw3.green Request for proposal
-      .mv3
-        label.db.fw6.lh-copy.f6(for="group_profile") Group profile
-        input(type="text").pa2.w-100.input-reset.bg-white.ba.b--black-30
-      .mv3
-        label.db.fw6.lh-copy.f6(for="proposal_deadline") Proposal deadline
-        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#proposal_deadline
-      .mv3
-        label.db.fw6.lh-copy.f6(for="decision_date") Decision date 
-        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#decision_date
-      .mv3
-        label.db.fw6.lh-copy.f6 Program
-        select
-          option(selected value="rooms_only") Rooms only
-      .mv3
-        label.db.fw6.lh-copy.f6 Date range
-        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#pick
-      .mv3
-        label.db.fw6.lh-copy.f6 Date selection (multiple/pattern)
-        input.pa2.w-100.input-reset.bg-white.ba.b--black-30#pick_multi
-    #app.overflow-auto(style="-webkit-overflow-scrolling: touch")
-      table.black.f6.w-100.mw8.center
-        thead
-        tbody
-          tr#date-row
-    .fl.w-100
-      h4 billing arrangements
-      h4 Hot buttons
-              
-                
+    .flex.flex-row.flex-wrap.black
+      .w-100.w-50-ns.flex.flex-row
+        .w-50
+          img(src="//placehold.it/200x200").br-100
+        .w-50.flex.justify-center.flex-column
+          .f4.fw3.black JoeGee1112
+          .f5.fw3.green Las Vegas, NV
+          .f5.fw3.gray Member since 2017 
+      .w-100.w-50-ns.flex.flex-row.justify-center.items-center
+        button.h2 Send message
+        button.h2 Follow planner
+        button.h2 Report planner
+    .flex.flex-row
+      .w-100.w-50-ns.bg-light-gray.pa2.br2.mv3.ba.b--black-10.black
+        .f2.fw1 Reviews
+        .f4.fw3.mv2 Hotels (17)
+        .f4.fw3.mv2 Convention Center (17)
+        .f4.fw3.mv2 Technology (17)
+        .f4.fw3.mv2 Destination MGT (17)
+        .f4.fw3.mv2 Helpful Votes (17)
+      .w-100.w-50-ns
+        .f5.mb2.tc.black Badges &amp; Awards
+        .flex.flex-row
+          .w-third.flex-column.items-center.justify-center.tc
+            img(src="//placehold.it/100x100").br-100.w-100.pa2
+            .gray International
+          .w-third.flex-column.items-center.justify-center.tc
+            img(src="//placehold.it/100x100").br-100.w-100.pa2
+            .gray City
+          .w-third.flex-column.items-center.justify-center.tc
+            img(src="//placehold.it/100x100").br-100.w-100.pa2
+            .gray Expert
   //- Contact:   George Yin
   //- Phone:	   202-495-0828
   //- Email:	   George@yinhospitality.com

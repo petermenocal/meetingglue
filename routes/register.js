@@ -44,7 +44,23 @@ router.post(
       return res.render("register", { errors: errors.array() });
     }
     var db = mongoUtil.getDb();
-    var { email, password1, password2, first_name, last_name } = req.body;
+    var {
+      email,
+      password1,
+      password2,
+      first_name,
+      last_name,
+      designation,
+      org_name,
+      org_address_1,
+      org_address_2,
+      org_city,
+      org_zip,
+      org_country,
+      work_email,
+      work_phone,
+      work_ext
+    } = req.body;
     if (password1 === password2) {
       bcrypt.hash(password1, 10, function(err, hash) {
         var query = { email: email };
@@ -53,6 +69,18 @@ router.post(
           password: hash,
           first_name: first_name,
           last_name: last_name,
+          designation: designation,
+          organization: {
+            name: org_name,
+            address_1: org_address_1,
+            address_2: org_address_2,
+            city: org_city,
+            zip: org_zip,
+            country: org_country
+          },
+          work_email: work_email,
+          work_phone: work_phone,
+          work_extension: work_ext,
           createdOn: new Date()
         };
         //check if email exists in system

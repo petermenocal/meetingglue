@@ -8,7 +8,7 @@ block content
         .fl.w-100.f5.fw4.gray=`Hotels`
       .fl.w-100.w-50-ns.pv3.ph3.tr-ns
         .fl.w-100.f3.fw4=`${hotel.address}`
-        .fl.w-100.f5.fw4.gray=`${hotel.city}`
+        .fl.w-100.f5.fw4.gray=`${hotel.city}, ${hotel.state} ${hotel.zip}`
     .fl.w-100.bg-white
       .fl.w-100.w-70-l.tc.bg-black
         if !hotel.avatarFilename
@@ -104,11 +104,6 @@ block content
             h1 Promotions
             .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
               img(src="/image/smartstart.png" height="200px" width="auto").br2.shadow-2.dim.pointer
-        else 
-          .fl.w-100.ph3
-            h1 Promotions
-            .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
-              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
         if (hotel.menu_capcity || hotel.menu_space || hotel.menu_banquet || hotel.menu_av) 
           .fl.w-50-ns.w-100.ph3
             h1 Media &amp; Downloads
