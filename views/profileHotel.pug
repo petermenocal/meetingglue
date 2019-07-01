@@ -150,13 +150,14 @@ block content
                 div.lh-copy.f6.measure= e.venue_name
         .fl.f3.b.fw5.w-100.w-50-ns.lh-title.gold
           p Twitter
-          each t in tweets
-            a.dt.w-100.bb.b--black-05.pb2.mt2.link.no-underline.dim.pointer(href=`https://twitter.com/${hotel.twitter}/status/${t.id_str}`)
-              .dtc.w2.w3-ns.v-mid
-                img.ba.b--black-10.db.br2.w2.w3-ns.h2.h3-ns(src=`${t.user.profile_image_url}`)
-              .dtc.v-mid.pl3
-                .f6.fw4.lh-title.light-green.mv0=`${t.text}` 
-                .f6.fw4.mt0.mb0.gold 
+          if tweets
+            each t in tweets
+              a.dt.w-100.bb.b--black-05.pb2.mt2.link.no-underline.dim.pointer(href=`https://twitter.com/${hotel.twitter}/status/${t.id_str}`)
+                .dtc.w2.w3-ns.v-mid
+                  img.ba.b--black-10.db.br2.w2.w3-ns.h2.h3-ns(src=`${t.user.profile_image_url}`)
+                .dtc.v-mid.pl3
+                  .f6.fw4.lh-title.light-green.mv0=`${t.text}` 
+                  .f6.fw4.mt0.mb0.gold 
 
       .fl.w-100.bg-white
         .fl.w-100.w-30-ns.bg-gray#mapContainer(style="height: 100%")

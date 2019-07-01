@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="/js/profile.js")
   .cf
     .fl.w-100.bg-near-black.green
       .fl.w-100.w-50-ns.pv3.ph3
@@ -87,12 +88,32 @@ block content
             .f6.fw4.lh-title.light-green.mv0=`${t.text}` 
             .f6.fw4.mt0.mb0.gold 
     .fl.w-100.bg-black.white.ph3
-      h1 CVB Updates
-      h4 Enrich Attendees’ Event Experiences with Volunteer Projects
-      img(src="/image/cvb-image.png").ba.b--white.bw3
-      p.lh-copy.gray Create purpose and connection among your attendees. Express your clients’ brand values by organizing a volunteer experience at your next meeting or event.
-      p.green
-        | by Arlington Convention & Visitors Service
-      p.lh-copy.white
-        | In the capital area, volunteer opportunities abound with a host of non-profits, Non-Governmental Organization (NGOs) and cause-driven organizations that can align well with your group or client’s mission. Activities can range from packing school supplies for local kids, joining in an environmental cleanup or even working as a volunteer at a charity run. If your clients’ organizational culture includes a focus on social responsibility, many local Arlington non-profits have activities that might be a good match for your attendees.
-  
+      .fl.w-100.w-50-ns.pa3
+        .f2.purple Updates
+        h4 Enrich Attendees’ Event Experiences with Volunteer Projects
+        img(src="/image/cvb-image.png").ba.b--white.bw3
+        p.lh-copy.gray Create purpose and connection among your attendees. Express your clients’ brand values by organizing a volunteer experience at your next meeting or event.
+        p.green
+          | by Arlington Convention & Visitors Service
+        p.lh-copy.white
+          | In the capital area, volunteer opportunities abound with a host of non-profits, Non-Governmental Organization (NGOs) and cause-driven organizations that can align well with your group or client’s mission. Activities can range from packing school supplies for local kids, joining in an environmental cleanup or even working as a volunteer at a charity run. If your clients’ organizational culture includes a focus on social responsibility, many local Arlington non-profits have activities that might be a good match for your attendees.
+      .fl.w-100.w-50-ns.pa3
+        .fl.w-100.h-50
+          .f2.orange=`Protips`
+          .f5.gold=`${cvb.city}, ${cvb.state}`
+          .fl.w-100
+          if cvb.protips
+            div.protips
+              each x in cvb.protips
+                .pa3
+                  .f5=`Property: ${x.property}`
+                  .f6.white-80 Username | June 25, 2019
+                  .f5.mt2.i.white-40=`${x.body}`
+        .fl.w-100.h-50
+          .f2.orange=`Accolades`
+          .f5.gold=`${cvb.city}, ${cvb.state}`
+          if cvb.accolades
+            div.accolades
+              each x in cvb.accolades
+                .pa3
+                  .f3.tc=`${x}`

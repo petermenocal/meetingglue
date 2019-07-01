@@ -1,12 +1,10 @@
 extends layout
 
 block content
-  .fl.w-100.relative
-    .absolute.tc.w-100.h-100.absolute-fill.bg-black-20
-      .flex.align-center.justify-center.items-center.flex-column.h-100
-        span.lh-title.f1.fw5 Meeting Glue
-        span.lh-subtitle Connecting planners and suppliers
-    img(src="/image/feature-images/oakland-cty-marriott___00000.jpg" width="100%" height="auto")
+  .fl.w-100.relative(style="background: url('/image/feature-images/oakland-cty-marriott___00000.jpg') center center; background-size: cover !important")
+    .flex.align-center.justify-center.items-center.flex-column.h-50
+      span.lh-title.f1.fw5 Meeting Glue
+      span.lh-subtitle Connecting planners and suppliers
   .fl.w-100.bg-near-black
     .cf.mw6.center.mt3.mb4
       h1.light-green Invite a fellow planner
