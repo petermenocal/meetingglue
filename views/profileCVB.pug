@@ -70,12 +70,13 @@ block content
               .pr3
                 a.f6.link.blue.hover-dark-gray(href=`tel:${s.salesperson_phone}`)=s.salesperson_phone
       .fl.w-50
-        if (hotelsInArea && hotelsInArea.length)
-            .fl.cf(style='max-height: 400px; overflow: scroll')
+        if (promosInArea && promosInArea.length)
+            .fl.cf(style='max-height: 400px; overflow: scroll').w-100
               .f4.fw5.lh-title.light-green Promos in area
-              each hia in hotelsInArea
+              each pia in promosInArea
                 .fl.w-100.bg-near-white.near-black.pa2.link.pointer.hover-bg-light-green.transitionAll
-                  a(href=`/hotel/${hia._id}`).link.no-underline.black.f5.fw2= hia.title
+                  .link.no-underline.black.f5.fw2=`${pia.title}`
+                  .link.no-underline.gray.f6.fw3=`${pia.hotel}`
     .fl.w-30.bg-near-black.gold.pa3(style="height: 100%; max-height: 400px; overflow:scroll")
       .pv3
         span.lh-headline.f3.fw6.gold=`@${cvb.twitter}`
@@ -90,17 +91,15 @@ block content
     .fl.w-100.bg-black.white.ph3
       .fl.w-100.w-50-ns.pa3
         .f2.purple Updates
-        h4 Enrich Attendees’ Event Experiences with Volunteer Projects
+        .f3.fw3.mv3 Enrich Attendees’ Event Experiences with Volunteer Projects
         img(src="/image/cvb-image.png").ba.b--white.bw3
         p.lh-copy.gray Create purpose and connection among your attendees. Express your clients’ brand values by organizing a volunteer experience at your next meeting or event.
-        p.green
-          | by Arlington Convention & Visitors Service
         p.lh-copy.white
           | In the capital area, volunteer opportunities abound with a host of non-profits, Non-Governmental Organization (NGOs) and cause-driven organizations that can align well with your group or client’s mission. Activities can range from packing school supplies for local kids, joining in an environmental cleanup or even working as a volunteer at a charity run. If your clients’ organizational culture includes a focus on social responsibility, many local Arlington non-profits have activities that might be a good match for your attendees.
       .fl.w-100.w-50-ns.pa3
         .fl.w-100.h-50
           .f2.orange=`Protips`
-          .f5.gold=`${cvb.city}, ${cvb.state}`
+          .f5.gold.mb2=`${cvb.city}, ${cvb.state}`
           .fl.w-100
           if cvb.protips
             div.protips
@@ -111,7 +110,7 @@ block content
                   .f5.mt2.i.white-40=`${x.body}`
         .fl.w-100.h-50
           .f2.orange=`Accolades`
-          .f5.gold=`${cvb.city}, ${cvb.state}`
+          .f5.gold.mb2=`${cvb.city}, ${cvb.state}`
           if cvb.accolades
             div.accolades
               each x in cvb.accolades

@@ -99,13 +99,19 @@ block content
               td.pa1.b Spa?
               td.pa1=`${hotel.hasSpa}`
       .fl.w-100.bg-black-90.gold.tc
-        if (!hotel.menu_capcity && !hotel.menu_space && !hotel.menu_banquet && !hotel.menu_av) 
-          .fl.w-100.ph3
-            h1 Promotions
-            .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
-              img(src="/image/smartstart.png" height="200px" width="auto").br2.shadow-2.dim.pointer
+        .fl.w-100.ph3
+          h1 Promotions
+          .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+            if hotel.promos
+              each x in hotel.promos
+                .flex.flex-column.items-center.justify-center.space-between
+                  if x.attachment
+                    a(href=`/image/uploads/${x.attachment}` target="_blank" rel="noopener")
+                      img(src=`/image/uploads/${x.attachment}` height="200" width="auto")
+                  p=`${x.title}`  
+                  p=`${x.link}`  
         if (hotel.menu_capcity || hotel.menu_space || hotel.menu_banquet || hotel.menu_av) 
-          .fl.w-50-ns.w-100.ph3
+          .fl.w-100.ph3
             h1 Media &amp; Downloads
             .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
               if (hotel.menu_capacity)
@@ -166,8 +172,8 @@ block content
             span = new mapkit.CoordinateSpan(0.0250, 0.0250),
             region = new mapkit.CoordinateRegion(center, span);
           var annotation = new mapkit.MarkerAnnotation(center, {
-            title: "Exhale Nevada",
-            subtitle: "4310 W Flamingo Road.",
+            title: " ",
+            subtitle: " ",
             glyphText: "×",
             color: "#00000",
             displayPriority: 1000

@@ -133,6 +133,7 @@ mongoUtil.connectToServer(function(err) {
   var adminUploadCvbRouter = require("./routes/adminUploadCvb");
   var adminUploadHotelRouter = require("./routes/adminUploadHotel");
   var adminStaffRouter = require("./routes/adminStaff");
+  var createPromoRouter = require("./routes/createPromo");
 
   // routes
   app.use("/", indexRouter);
@@ -156,6 +157,7 @@ mongoUtil.connectToServer(function(err) {
   app.use("/register", registerRouter);
   app.use("/profile", profileRouter);
   app.use("/logout", logoutRouter);
+  app.use("/create/promo", createPromoRouter);
 
   if (process.env.ENVIRONMENT === "prod") {
     const privateKey = fs.readFileSync(

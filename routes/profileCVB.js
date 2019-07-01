@@ -30,6 +30,17 @@ router.get("/:id", localQuery, function(req, res, next) {
     db.collection("hotels")
       .find({ city: result.city })
       .toArray(function(err, result2) {
+        var promosInArea = [];
+        for (let index = 0; index < result2.length; index++) {
+          const element = result2[index];
+          if (element.promos && element.promos.length) {
+            element.promos.forEach(e => {
+              e.hotel = element.title;
+              promosInArea.push(e);
+            });
+          }
+        }
+        console.log(promosInArea);
         var options = { screen_name: result.twitter, count: 2 };
         var userTweets;
         T.get("statuses/user_timeline", options, function(err, data) {
@@ -39,6 +50,7 @@ router.get("/:id", localQuery, function(req, res, next) {
             page_name: "profile_cvb",
             cvb: result,
             hotelsInArea: result2,
+            promosInArea: promosInArea,
             tweets: userTweets
           });
         });

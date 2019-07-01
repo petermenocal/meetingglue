@@ -167,15 +167,14 @@ block content
               
               input(type="submit").mt4.fl.w-100.bg-green.pa3.white.ba.b--green.dim.pointer
       .mw8.center.bg-black-30.pa3.black
-        label.db.fw6.lh-copy.f6(for='name') Upload image
+        legend.f2.fw3.ph0.mv2 Cover image
         form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data").form-group
           input(type="hidden", name="id" value=`${foundProduct._id}`)
-          label.form-label(for="avatar") Image
           p
             small Upload a picture for this entity.
           input.form-input(type="file" name="avatar")
           input.btn.mt-2(type="submit")
-          div.mt-2
+          div.mt2
             h5 Current image:
             if (foundProduct.avatarFilename)
               img.avatar.avatar-xl(src=`/uploads/${foundProduct.avatarFilename}`)
@@ -229,12 +228,45 @@ block content
           input.form-input(type="file" name="menu_av")
           input.btn.mt-2(type="submit")
           
-
-
-      .mw8.center.bg-black.pa3.near-white.bb.b--white-20
-        label.db.fw6.lh-copy.f6.mt3(for='closestAirport') Find closest airports
+      .mw8.center.bg-navy.pa3.near-white.bb.b--white-20.cf
+        legend.f2.fw3.ph0.mv2 Closest airports
         label.db.fw6.lh-copy.f6.mt3(for='closestAirport')=`Currently: ${foundProduct.closestAirport}`
         form(action="/airport" method="POST")
           input(type="hidden" name="location" value=`${foundProduct.zip}`) 
           input(type="hidden" name="entity_id" value=`${foundProduct._id}`) 
           input(type="submit")
+
+
+      .mw8.center.bg-near-white.pa3.near-white.bb.b--white-20
+          fieldset#ba.b--transparent.ph0.mh0
+            .fl.w-100.black
+              .fl.w-50-ns.w-100.cf
+                .flex.flex-column.pa2.ph3
+                  legend.f2.fw3.ph0.mv2 Promos
+                  form(method="POST" action="/create/promo" encType="multipart/form-data").flex.flex-column
+                    input(type="hidden" name="location" value=`${foundProduct.zip}`) 
+                    input(type="hidden" name="entity_id" value=`${foundProduct._id}`) 
+                    label(for="promo_title").b Title
+                    input(type="text" name="promo_title" placeholder="Promo name").pa2.f5
+                    label(for="promo_link").b.mt3 Link
+                    input(type="text" name="promo_link").pa2.f5.ba.b--black-10
+                    label(for="promo_attachment").b.mt3 Attachment
+                    input.form-input(type="file" name="promo_attachment")
+                    input.btn.mt-2.bg-green.pa3.white.b--green.ba.mt3.pointer.dim(type="submit" value="Save new promo")
+              .fl.w-50-ns.w-100.cf
+                .flex.flex-column.pa2
+                  legend.f2.fw3.ph0.mv2 Active promos
+                  if foundProduct.promos
+                    each val, index in foundProduct.promos
+                      article.pv4.bt.bb.b--black-10.ph3.ph0-l
+                        .flex.flex-row-ns
+                          .w-80.pr3-ns
+                            .f4.mt0.lh-title=`${val.title}`
+                            if val.attachment
+                              .f6.mt0.gray has attachment
+                          .w-20
+                            form(action="/create/promo" method="POST")
+                              input(type="hidden" name="promo_index" value=`${index}`)
+                              input(type="hidden" name="entity_id" value=`${foundProduct._id}`) 
+                              input(type="hidden" name="remove_promo" value="true")
+                              button.bg-washed-red.ba.b--red.red.pa2.dim.pointer Delete
