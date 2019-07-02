@@ -18,7 +18,6 @@ router.get("/", localQuery, function(req, res, next) {
         industryNews.push(item);
       }
     });
-
     let openings = await parser.parseURL(
       "https://www.hospitalitynet.org/news/openings.xml"
     );
