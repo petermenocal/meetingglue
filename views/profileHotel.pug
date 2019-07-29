@@ -9,7 +9,7 @@ block content
       .fl.w-100.w-50-ns.pv3.ph3.tr-ns
         .fl.w-100.f3.fw4=`${hotel.address}`
         .fl.w-100.f5.fw4.gray=`${hotel.city}, ${hotel.state} ${hotel.zip}`
-    .fl.w-100.bg-white
+    .fl.w-100.bg-white.bb.bw1.b--black
       .fl.w-100.w-70-l.tc.bg-black
         if !hotel.avatarFilename
           img(src="/image/placeholder.png")
@@ -18,86 +18,88 @@ block content
       .fl.w-100.w-30-l
         table.f6.w-100.mw8.center(cellspacing='0').black
           tbody.lh-copy
-          if (hotel.direcotSales)
             tr.stripe-dark
-              td.pa1.b Director of Sales
-              td.pa1=`${hotel.direcotSales}`
-          if (hotel.directorCatering)
-            tr.stripe-dark
-              td.pa1.b Director of Catering
-              td.pa1=`${hotel.directorCatering}`
-          if (hotel.twitter)
-            tr.stripe-dark
-              td.pa1.b Twitter
-              td.pa1=`${hotel.twitter}`
+              td.pa1.b Rating
+              td.pa1=`${hotel.diamonds}`
           if (hotel.numberOfSleepingRooms)
             tr.stripe-dark
               td.pa1.b Sleeping rooms
-              td.pa1=`${hotel.numberOfSleepingRooms}`
+              td.pa1=`${hotel.numberOfSleepingRooms}`    
           if (hotel.roomsTaxPercent)
             tr.stripe-dark
               td.pa1.b Rooms tax
-              td.pa1=`${hotel.roomsTaxPercent}%`
+              td.pa1=`${hotel.roomsTaxPercent}`
           if (hotel.resortFee)
             tr.stripe-dark
               td.pa1.b Resort fee
-              td.pa1=`$${hotel.resortFee}`
-          if (hotel.salesTax)
-            tr.stripe-dark
-              td.pa1.b Sales tax
-              td.pa1=`${hotel.salesTax}%`
-          if (hotel.parkingFeeSelf)
-            tr.stripe-dark
-              td.pa1.b Self parking fee
-              td.pa1=`$${hotel.parkingFeeSelf}`
-          if (hotel.parkingFeeValet)
-            tr.stripe-dark
-              td.pa1.b Valet parking fee
-              td.pa1=`$${hotel.parkingFeeValet}`
+              td.pa1=`${hotel.resortFee}`
           if (hotel.meetingRoomsAmount)
             tr.stripe-dark
-              td.pa1.b Number of meeting rooms
+              td.pa1.b Meeting rooms
               td.pa1=`${hotel.meetingRoomsAmount}`
           if (hotel.largestRoom1)
             tr.stripe-dark
               td.pa1.b Largest room (1)
-              td.pa1=`${hotel.largestRoom1} sqft.`
+              td.pa1=`${hotel.largestRoom1} sf`
           if (hotel.largestRoom2)
             tr.stripe-dark
               td.pa1.b Largest room (2)
-              td.pa1=`${hotel.largestRoom2} sqft.`
-          if (hotel.publicWifiFee)
+              td.pa1=`${hotel.largestRoom2} sf`
+          tr.stripe-dark
+            td.pa1.b In-House Audio Visual
+            td.pa1=`Property owned equipment`
+          if (hotel.salesTax)
             tr.stripe-dark
-              td.pa1.b Public WiFi fee
-              td.pa1=`$${hotel.publicWifiFee}`
-          if (hotel.serviceChargePercent)
+              td.pa1.b Food & Beverage Tax
+              td.pa1=`${hotel.salesTax}%`
+          if (hotel.parkingFeeSelf)
             tr.stripe-dark
-              td.pa1.b Service charge 
-              td.pa1=`${hotel.serviceChargePercent}%`
-          if (hotel.diamonds)
+              td.pa1.b Self parking fee
+              td.pa1=`${hotel.parkingFeeSelf}`
+          if (hotel.parkingFeeValet)
             tr.stripe-dark
-              td.pa1.b Hotel rating
-              td.pa1=`${hotel.diamonds}`
+              td.pa1.b Valet parking
+              td.pa1=`${hotel.parkingFeeValet}`
           if (hotel.loyaltyProgramName)
             tr.stripe-dark
               td.pa1.b Loyalty program
               td.pa1=`${hotel.loyaltyProgramName}`
-          if (hotel.closestAirport)
-            tr.stripe-dark
-              td.pa1.b Closest airport
-              td.pa1=`${hotel.closestAirport}`
           if (hotel.fitnessCenter)
             tr.stripe-dark
-              td.pa1.b Fitness center?
-              td.pa1=`${hotel.fitnessCenter}`
+              td.pa1.b Fitness center
+              - var fitnessStatus = hotel.fitnessCenter
+              - if (fitnessStatus === true) { fitnessStatusHumanReadable = 'Yes' } else { fitnessStatusHumanReadable = 'No' }
+              td.pa1=fitnessStatusHumanReadable
+          if (hotel.serviceChargePercent)
+            tr.stripe-dark
+              td.pa1.b Service charge 
+              td.pa1=`${hotel.serviceChargePercent}`
+          if (hotel.publicWifiFee)
+            tr.stripe-dark
+              td.pa1.b Public WiFi fee
+              td.pa1=`$${hotel.publicWifiFee}`
           if (hotel.hasPool)
             tr.stripe-dark
-              td.pa1.b Pool?
-              td.pa1=`${hotel.hasPool}`
+              td.pa1.b Pool
+              - var poolStatus = hotel.hasPool
+              - if (poolStatus === true) { poolStatusHumanReadable =  'Yes' } else { poolStatusHumanReadable = 'No' }
+              td.pa1=poolStatusHumanReadable
           if (hotel.hasSpa)
             tr.stripe-dark
-              td.pa1.b Spa?
-              td.pa1=`${hotel.hasSpa}`
+              - var spaStatus = hotel.hasSpa
+              - if (spaStatus === true) { spaStatusHumanReadable =  'Yes' } else { spaStatusHumanReadable = 'No' }
+              td.pa1.b Spa
+              td.pa1=spaStatusHumanReadable
+          tr.stripe-dark
+            td.pa1.b Union status
+            td.pa1=`Non-union`
+          if (hotel.closestAirport)
+            tr.stripe-dark
+              td.pa1.b Airports
+              td.pa1=`${hotel.closestAirport}`
+          tr.stripe-dark
+            td.pa1.b Public transportation
+            td.pa1=`12th St./Oakland City Center 0.1mi`
       .fl.w-100.bg-black-90.gold.tc
         .fl.w-100.ph3
           h1 Promotions
@@ -155,7 +157,7 @@ block content
                 div.lh-copy.f5.measure-narrow.green= e.title
                 div.lh-copy.f6.measure= e.venue_name
         .fl.f3.b.fw5.w-100.w-50-ns.lh-title.gold
-          p Twitter
+          p=`Twitter @${hotel.twitter}`
           if tweets
             each t in tweets
               a.dt.w-100.bb.b--black-05.pb2.mt2.link.no-underline.dim.pointer(href=`https://twitter.com/${hotel.twitter}/status/${t.id_str}`)
