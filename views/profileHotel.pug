@@ -108,8 +108,8 @@ block content
               each x in hotel.promos
                 .flex.flex-column.items-center.justify-center.space-between
                   if x.attachment
-                    a(href=`/image/uploads/${x.attachment}` target="_blank" rel="noopener")
-                      img(src=`/image/uploads/${x.attachment}` height="200" width="auto")
+                    a(href=`/uploads/${x.attachment}` target="_blank" rel="noopener")
+                      img(src=`/uploads/${x.attachment}` height="200" width="auto")
                   p=`${x.title}`  
                   p=`${x.link}`  
         if (hotel.menu_capcity || hotel.menu_space || hotel.menu_banquet || hotel.menu_av) 
@@ -117,13 +117,13 @@ block content
             h1 Media &amp; Downloads
             .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
               if (hotel.menu_capacity)
-                a(href=`/uploads/${hotel._id}/${hotel.menu_capacity}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white Capacity chart        
+                a(href=`/uploads/${hotel._id}/${hotel.menu_capacity}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white Capacity chart        
               if (hotel.menu_capacity)
-                a(href=`/uploads/${hotel._id}/${hotel.menu_space}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white Meeting space diagram   
+                a(href=`/uploads/${hotel._id}/${hotel.menu_space}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white Meeting space diagram   
               if (hotel.menu_capacity)
-                a(href=`/uploads/${hotel._id}/${hotel.menu_banquet}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white Banquet menu
+                a(href=`/uploads/${hotel._id}/${hotel.menu_banquet}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white Banquet menu
               if (hotel.menu_capacity)
-                a(href=`/uploads/${hotel._id}/${hotel.menu_av}`).pa3.ba.b--green.br2.dim.pointer.bg-green.white AV menu
+                a(href=`/uploads/${hotel._id}/${hotel.menu_av}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white AV menu
       .fl.w-100.bg-navy.pa3
         .fl.w-50-ns.w-100
           .f3.fw5.whitesmoke.lh-title.green Location performance
