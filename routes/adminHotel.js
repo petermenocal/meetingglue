@@ -30,6 +30,7 @@ router.get("/:productId", localQuery, function(req, res, next) {
 /* POST home page. */
 router.post("/", localQuery, function(req, res, next) {
   if (req.isAuthenticated()) {
+    console.log(req.body);
     if (!req.user.admin) res.redirect("/login");
     var db = mongoUtil.getDb();
     var updateObj = req.body;

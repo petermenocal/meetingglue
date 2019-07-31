@@ -43,25 +43,20 @@ router.post("/", function(req, res, next) {
         );
       }
     );
-  } else {
+  }
+  if (req.body.remove_promo) {
     db.collection("hotels").findOneAndUpdate(
       {
         _id: ObjectID(req.body.entity_id)
       },
       {
-        $addToSet: {
-          promos: {
-            title: promo_title,
-            link: promo_link
-          }
+        $pull: {
+          promos: { title: req.body.promo }
         }
       },
-      {
-        returnOriginal: true
-      },
-      function(err, results) {
-        if (err) throw new Error(err);
-        req.flash("notify", "Promo saved.");
+      function(err, result) {
+        req.flash("notify", "Promo removed.");
+        console.log(result);
         res.redirect("back");
       }
     );

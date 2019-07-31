@@ -51,9 +51,7 @@ block content
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='zip') Zip
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='zip' value=`${foundProduct.zip}`)
-              .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='diamonds') Rating
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='diamonds' value=`${foundProduct.diamonds}`)
+            
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='state') State
                 label.db.fw6.lh-copy.f6=`Currently set to: ${foundProduct.state}`
@@ -111,19 +109,22 @@ block content
                   option(value='WI' selected=foundProduct.state=='WI') Wisconsin
                   option(value='WY' selected=foundProduct.state=='WY') Wyoming
               .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='direcotSales') Director of Sales
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='direcotSales' value=`${foundProduct.direcotSales}`)
+                label.db.fw6.lh-copy.f6.mt3(for='diamonds') Rating
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='diamonds' value=`${foundProduct.diamonds}`)
               .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='directorCatering') Director of Catering
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='directorCatering' value=`${foundProduct.directorCatering}`)
+                label.db.fw6.lh-copy.f6.mt3(for='numberOfSleepingRooms') Sleeping rooms
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='numberOfSleepingRooms' value=`${foundProduct.numberOfSleepingRooms}`)
               .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='generalEmail') General email
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='generalEmail' value=`${foundProduct.generalEmail}`)
+                label.db.fw6.lh-copy.f6.mt3(for='roomsTaxPercent') Rooms tax
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='roomsTaxPercent' value=`${foundProduct.roomsTaxPercent}`)
               .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='largestRoom1') Largest room (1) sqft
+                label.db.fw6.lh-copy.f6.mt3(for='resortFee') Resort fee 
+                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='resortFee' value=`${foundProduct.resortFee}`)
+              .mv3
+                label.db.fw6.lh-copy.f6.mt3(for='largestRoom1') Largest room (1) sf
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='largestRoom1' value=`${foundProduct.largestRoom1}`)
               .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='largestRoom2') Largest room (2) sqft
+                label.db.fw6.lh-copy.f6.mt3(for='largestRoom2') Largest room (2) sf
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='largestRoom2' value=`${foundProduct.largestRoom2}`)
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='loyaltyProgramName') Loyalty program name
@@ -131,9 +132,6 @@ block content
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='meetingRoomsAmount') Meeting rooms amount 
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='meetingRoomsAmount' value=`${foundProduct.meetingRoomsAmount}`)
-              .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='numberOfSleepingRooms') Number of sleeping rooms
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='numberOfSleepingRooms' value=`${foundProduct.numberOfSleepingRooms}`)
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='numberOfSuites') Number of suites
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='numberOfSuites' value=`${foundProduct.numberOfSuites}`)
@@ -146,12 +144,7 @@ block content
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='publicWifiFee') Public wifi fee
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='publicWifiFee' value=`${foundProduct.publicWifiFee}`)
-              .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='resortFee') Resort fee 
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='resortFee' value=`${foundProduct.resortFee}`)
-              .mv3
-                label.db.fw6.lh-copy.f6.mt3(for='roomsTaxPercent') Rooms tax
-                input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='roomsTaxPercent' value=`${foundProduct.roomsTaxPercent}`)
+              
               .mv3
                 label.db.fw6.lh-copy.f6.mt3(for='salesEmail') Sales email
                 input.pa2.input-reset.ba.b--black-30.w-100(type='text' name='salesEmail' value=`${foundProduct.salesEmail}`)
@@ -250,11 +243,11 @@ block content
                     input(type="hidden" name="location" value=`${foundProduct.zip}`) 
                     input(type="hidden" name="entity_id" value=`${foundProduct._id}`) 
                     label(for="promo_title").b Title
-                    input(type="text" name="promo_title" placeholder="Promo name").pa2.f5
+                    input(type="text" name="promo_title" placeholder="Promo name" required).pa2.f5
                     label(for="promo_link").b.mt3 Link
-                    input(type="text" name="promo_link").pa2.f5.ba.b--black-10
-                    label(for="promo_attachment").b.mt3 Attachment
-                    input.form-input(type="file" name="promo_attachment")
+                    input(type="text" name="promo_link" required).pa2.f5.ba.b--black-10
+                    label(for="promo_attachment").b.mt3 Image
+                    input.form-input(type="file" name="promo_attachment" required)
                     input.btn.mt-2.bg-green.pa3.white.b--green.ba.mt3.pointer.dim(type="submit" value="Save new promo")
               .fl.w-50-ns.w-100.cf
                 .flex.flex-column.pa2
@@ -265,11 +258,9 @@ block content
                         .flex.flex-row-ns
                           .w-80.pr3-ns
                             .f4.mt0.lh-title=`${val.title}`
-                            if val.attachment
-                              .f6.mt0.gray has attachment
                           .w-20
-                            form(action="/create/promo" method="POST")
-                              input(type="hidden" name="promo_index" value=`${index}`)
+                            form(action="/create/promo/" method="POST" encType="multipart/form-data")
+                              input(type="hidden" name="promo" value=`${val.title}`)
                               input(type="hidden" name="entity_id" value=`${foundProduct._id}`) 
                               input(type="hidden" name="remove_promo" value="true")
                               button.bg-washed-red.ba.b--red.red.pa2.dim.pointer Delete
