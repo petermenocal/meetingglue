@@ -10,7 +10,11 @@ block content
         .fl.w-100.f3.fw4=`${hotel.address}`
         .fl.w-100.f5.fw4.gray=`${hotel.city}, ${hotel.state} ${hotel.zip}`
     .fl.w-100.bg-white.bb.bw1.b--black
-      .fl.w-100.w-70-l.tc.bg-black
+      .fl.w-100.w-70-l.tc.bg-black.relative
+        .absolute.bg-black-70.pa3(style="left: 0%; top: 30%").tl
+          .f3.orange Come find us!
+          .f4 SmartConnect
+          .f6 August 20, 2019
         if !hotel.avatarFilename
           img(src="/image/placeholder.png")
         else
@@ -18,7 +22,7 @@ block content
       .fl.w-100.w-30-l
         table.f6.w-100.mw8.center(cellspacing='0').black
           tbody.lh-copy
-            tr.stripe-dark
+            tr.stripe
               td.pa1.b Rating
               td.pa1=`${hotel.diamonds}`
           if (hotel.numberOfSleepingRooms)
@@ -46,7 +50,7 @@ block content
               td.pa1.b Largest room (2)
               td.pa1=`${hotel.largestRoom2} sf`
           tr.stripe-dark
-            td.pa1.b In-House Audio Visual
+            td.pa1.b In-House A/V 
             td.pa1=`Property owned equipment`
           if (hotel.salesTax)
             tr.stripe-dark
@@ -101,29 +105,34 @@ block content
             td.pa1.b Public transportation
             td.pa1=`12th St./Oakland City Center 0.1mi`
       .fl.w-100.bg-black-90.gold.tc
-        .fl.w-100.ph3
+        .fl.w-50.ph3
           h1 Promotions
-          .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
-            if hotel.promos
-              each x in hotel.promos
-                .flex.flex-column.items-center.justify-center.space-between
-                  if x.attachment
-                    a(href=`/uploads/${x.attachment}` target="_blank" rel="noopener")
-                      img(src=`/uploads/${x.attachment}` height="200" width="auto")
-                  p=`${x.title}`  
-                  p=`${x.link}`  
-        if (hotel.menu_capcity || hotel.menu_space || hotel.menu_banquet || hotel.menu_av) 
-          .fl.w-100.ph3
+          .cf.mw7.center.pb4
+            .h3.white Courtyard Oakland Downtown - Oakland, California
+            .f4.green Smart Meetings Promotion
+            .f5 Expires: September 30, 2019
+            //- if hotel.promos
+            //-   each x in hotel.promos
+            //-     .flex.flex-column.items-center.justify-center.space-between
+            //-       if x.attachment
+            //-         a(href=`https://${x.link}` target="_blank" rel="noopener")
+            //-           img(src=`/image/uploads/${x.attachment}` height="200" width="auto")
+          .fl.w-100.ph3.bg-near-black
             h1 Media &amp; Downloads
-            .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4
+            .flex.flex-row.flex-wrap.justify-between.mw7.center.pb4.items-center
               if (hotel.menu_capacity)
                 a(href=`/uploads/${hotel._id}/${hotel.menu_capacity}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white Capacity chart        
-              if (hotel.menu_capacity)
+              if (hotel.menu_space)
                 a(href=`/uploads/${hotel._id}/${hotel.menu_space}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white Meeting space diagram   
-              if (hotel.menu_capacity)
+              if (hotel.menu_banquet)
                 a(href=`/uploads/${hotel._id}/${hotel.menu_banquet}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white Banquet menu
-              if (hotel.menu_capacity)
+              if (hotel.menu_av)
                 a(href=`/uploads/${hotel._id}/${hotel.menu_av}`).pa3.ba.b--green.br2.dim.pointer.link.no-underline.bg-green.white AV menu
+        .fl.w-50.ph3.bg-black(style="height: 400px")
+          h1 Staff
+          .f3 Ruben Barahona
+          .f6 510.625.8282
+          .f6 Ruben.Barahona@interstatehotels.com
       .fl.w-100.bg-navy.pa3
         .fl.w-50-ns.w-100
           .f3.fw5.whitesmoke.lh-title.green Location performance
@@ -189,26 +198,28 @@ block content
           map.addAnnotation(annotation);
         .fl.w-100.w-70-ns
           .flex.flex-row.flex-wrap
+            .w-100.pa4
+              .f4.green=`Posts by ${hotel.title}`
             .w-50.pa4
               img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+              .f5.fw3.gray.pv2=new Date().toString().substr(0, 15)
+            .w-50.pa4
+              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+              .f5.fw3.gray.pv2=new Date().toString().substr(0, 15)
             
             .w-50.pa4
               img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+              .f5.fw3.gray.pv2=new Date().toString().substr(0, 15)
             
             .w-50.pa4
               img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+              .f5.fw3.gray.pv2=new Date().toString().substr(0, 15)
             
             .w-50.pa4
               img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+              .f5.fw3.gray.pv2=new Date().toString().substr(0, 15)
             
             .w-50.pa4
               img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
-            
-            .w-50.pa4
-              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
-            
-            .w-50.pa4
-              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
-            
-            .w-50.pa4
-              img(src="/image/smartstart.png" height="auto" width="100%").br2.shadow-2.dim.pointer
+              .f5.fw3.gray.pv2=new Date().toString().substr(0, 15)
+          
