@@ -22,7 +22,7 @@ router.get("/", localQuery, function(req, res, next) {
 
 router.post("/", localQuery, (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: "/profile",
+    successRedirect: "/admin",
     failureRedirect: "/login?error=Login failed. Try again.",
     failureFlash: false
   })(req, res, next);

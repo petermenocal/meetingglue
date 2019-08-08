@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="/js/profile_hotel.js")
   .cf
     .fl.w-100.bg-near-black.green
       .fl.w-100.w-50-ns.pv3.ph3
@@ -15,10 +16,13 @@ block content
           .f3.orange Come find us!
           .f4 SmartConnect
           .f6 August 20, 2019
-        if !hotel.avatarFilename
-          img(src="/image/placeholder.png")
-        else
-          img(src=`/uploads/${hotel.avatarFilename}` style="height: 500px; width:100%; object-fit: cover !important")
+        div.accolades
+          if !hotel.covers
+            img(src=`/image/tmp-cover.jpg` style="height: 500px; width:100%; object-fit: cover !important")
+          if hotel.covers
+            each h in hotel.covers
+              .fl.w-100
+                img(src=`/uploads/${h}` style="height: 500px; width:100%; object-fit: cover !important")
       .fl.w-100.w-30-l
         table.f6.w-100.mw8.center(cellspacing='0').black
           tbody.lh-copy
@@ -148,14 +152,9 @@ block content
         .fl.w-50-ns.w-100.mt3.mt0-ns.ph4
           .f3.fw5.green Protips
           .f5.fw2.light-green The pros know best. Share tips about this property with other planners.
-          ul.list.pl0
-            li.mt2.b.f4.fw2.gold Grade the following based on your event at this property
-            li.mt2.light-blue Sales contracting process
-            li.mt2.light-blue Service experience onsite
-            li.mt2.light-blue Group food and beverage quality   
-            li.mt2.light-blue Would you consider this venue for another event?
-            li.mt2.light-blue Did you encounter any issues during your event?
-          input
+            .f3.white.mt4 The hotel is across the street from the convention center and the BART station is only 2 blocks away. Convenient downtown location.
+            h1  GY8577
+            h5 Corporate | Technology | March 2019
       .fl.w-100.bg-black.white.pa3
         .fl.f3.b.fw5.w-100.w-50-ns.lh-title.gold
           p Nearby events 

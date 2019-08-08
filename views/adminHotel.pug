@@ -171,15 +171,21 @@ block content
           input.form-input(type="file" name="avatar")
           input.btn.mt-2(type="submit")
           div.mt2
-            h5 Current image:
-            if (foundProduct.avatarFilename)
-              img.avatar.avatar-xl(src=`/uploads/${foundProduct.avatarFilename}`)
-            if (!foundProduct.avatarFilename)
-              img.avatar.avatar-xl(src=`/image/avatar-placeholder.jpg`)
-      
+            h5 Current image(s):
+            if (foundProduct.covers)
+              .flex.flex-row
+                each c in foundProduct.covers
+                  div(style="width: 300px").flex.flex-column.ph2
+                    form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data")
+                      input(type="hidden" name="id" value=`${foundProduct._id}`)
+                      input(type="hidden" name="delete_image" value="true")
+                      input(type="hidden" name="image_id" value=`${c}`)
+                      input(type="submit")
+                    img.avatar.avatar-xl(src=`/uploads/${c}` height="auto" width="auto" style="max-width: 300px")
+            if (!foundProduct.covers)
+              .f4 no cover images set
       .mw8.center.bg-black.pa3.near-white
         .f2.fw3 Profile attachments
-
       .mw8.center.bg-black.pa3.near-white.bb.b--white-20
         label.db.fw6.lh-copy.f6(for='name') Upload capacity chart
         if (foundProduct.menu_capacity)
