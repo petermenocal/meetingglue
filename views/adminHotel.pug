@@ -163,25 +163,25 @@ block content
               
               input(type="submit").mt4.fl.w-100.bg-green.pa3.white.ba.b--green.dim.pointer
       .mw8.center.bg-black-30.pa3.black
-        legend.f2.fw3.ph0.mv2 Cover image
-        form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data").form-group
-          input(type="hidden", name="id" value=`${foundProduct._id}`)
-          p
-            small Upload a picture for this entity.
-          input.form-input(type="file" name="avatar")
-          input.btn.mt-2(type="submit")
+          div.mt2
+            form(action="/admin/edit/hotel/upload" method="post" id="form1" encType="multipart/form-data").form-group
+              p
+                small Upload a picture for this entity.
+              input(type="hidden", name="id" value=`${foundProduct._id}`)
+              input.form-input(type="file" name="avatar")
+              input.btn.mt-2(type="submit" form="form1")
           div.mt2
             h5 Current image(s):
             if (foundProduct.covers)
               .flex.flex-row
                 each c in foundProduct.covers
                   div(style="width: 300px").flex.flex-column.ph2
-                    form(action="/admin/edit/hotel/upload" method="post" encType="multipart/form-data")
+                    form(action="/admin/delete/image" method="post" id="form2" encType="multipart/form-data")
                       input(type="hidden" name="id" value=`${foundProduct._id}`)
                       input(type="hidden" name="delete_image" value="true")
                       input(type="hidden" name="image_id" value=`${c}`)
-                      input(type="submit")
-                    img.avatar.avatar-xl(src=`/uploads/${c}` height="auto" width="auto" style="max-width: 300px")
+                      input(type="submit" form="form2")
+                      img.avatar.avatar-xl(src=`/uploads/${c}` height="auto" width="auto" style="max-width: 300px")
             if (!foundProduct.covers)
               .f4 no cover images set
       .mw8.center.bg-black.pa3.near-white

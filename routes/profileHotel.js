@@ -45,7 +45,6 @@ router.get("/:id", localQuery, function(req, res, next) {
         });
         var eventsFlat = _.flatten(events);
         result.events = eventsFlat.slice(0, 3);
-
         res.render("profileHotel", {
           title: "Hotel Profile",
           page_name: "profile_hotel",
