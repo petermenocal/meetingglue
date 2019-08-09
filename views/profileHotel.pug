@@ -17,7 +17,7 @@ block content
           .f4 SmartConnect
           .f6 August 20, 2019
         div.accolades
-          if !hotel.covers
+          if !hotel.covers  || hotel.covers.length == 0
             img(src=`/image/tmp-cover.jpg` style="height: 500px; width:100%; object-fit: cover !important")
           if hotel.covers
             each h in hotel.covers
@@ -62,7 +62,7 @@ block content
               td.pa1=`${hotel.salesTax}%`
           if (hotel.parkingFeeSelf)
             tr.stripe-dark
-              td.pa1.b Self parking fee
+              td.pa1.b Self parking
               td.pa1=`${hotel.parkingFeeSelf}`
           if (hotel.parkingFeeValet)
             tr.stripe-dark
@@ -72,32 +72,27 @@ block content
             tr.stripe-dark
               td.pa1.b Loyalty program
               td.pa1=`${hotel.loyaltyProgramName}`
-          if (hotel.fitnessCenter)
-            tr.stripe-dark
-              td.pa1.b Fitness center
-              - var fitnessStatus = hotel.fitnessCenter
-              - if (fitnessStatus === true) { fitnessStatusHumanReadable = 'Yes' } else { fitnessStatusHumanReadable = 'No' }
-              td.pa1=fitnessStatusHumanReadable
+          
           if (hotel.serviceChargePercent)
             tr.stripe-dark
               td.pa1.b Service charge 
               td.pa1=`${hotel.serviceChargePercent}`
           if (hotel.publicWifiFee)
-            tr.stripe-dark
+            tr.stripe
               td.pa1.b Public WiFi fee
               td.pa1=`$${hotel.publicWifiFee}`
-          if (hotel.hasPool)
+          if (hotel.fitnessCenter)
             tr.stripe-dark
+              td.pa1.b Fitness center 
+              td.pa1=`Yes`
+          if (hotel.hasPool)
+            tr.stripe
               td.pa1.b Pool
-              - var poolStatus = hotel.hasPool
-              - if (poolStatus === true) { poolStatusHumanReadable =  'Yes' } else { poolStatusHumanReadable = 'No' }
-              td.pa1=poolStatusHumanReadable
+              td.pa1 Yes : Outdoor
           if (hotel.hasSpa)
             tr.stripe-dark
-              - var spaStatus = hotel.hasSpa
-              - if (spaStatus === true) { spaStatusHumanReadable =  'Yes' } else { spaStatusHumanReadable = 'No' }
               td.pa1.b Spa
-              td.pa1=spaStatusHumanReadable
+              td.pa1 No
           tr.stripe-dark
             td.pa1.b Union status
             td.pa1=`Non-union`
